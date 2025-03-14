@@ -1,54 +1,57 @@
-# React + TypeScript + Vite
+# KUrierFree (Client Repository)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## 📌 프로젝트 구조
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```
+📦 src
+├── 📂 assets            # 정적 파일 (이미지, 아이콘, 폰트 등)
+├── 📂 components        # 재사용 가능한 UI 컴포넌트
+│   ├── 📂 common       # 버튼, 입력 필드 등 공통 컴포넌트
+│   ├── 📂 layout       # 레이아웃 관련 컴포넌트 (Navbar, Footer 등)
+│   ├── 📂 ui           # Tailwind 기반의 UI 컴포넌트
+│   ├── 📜 index.ts     # 컴포넌트들을 한 곳에서 export
+├── 📂 hooks            # 커스텀 훅 (Zustand 상태 관리 포함)
+│   ├── useStore.ts     # Zustand 스토어 정의
+│   ├── useFetch.ts     # API 호출 관련 커스텀 훅
+├── 📂 pages            # 페이지 컴포넌트 (Next.js 스타일)
+│   ├── 📜 Home.tsx     # 메인 페이지
+├── 📂 services         # API 요청 함수
+│   ├── api.ts          # axios/fetch API 요청 관리
+├── 📂 styles           # Tailwind 관련 스타일 파일
+│   ├── globals.css     # 전역 스타일
+│   ├── tailwind.css    # Tailwind 기본 설정
+├── 📂 types            # TypeScript 타입 정의
+│   ├── user.ts         # 유저 관련 타입
+│   ├── index.ts        # 타입 export 정리
+├── 📂 utils            # 유틸리티 함수 (ex: 날짜 포맷 변환 등)
+│   ├── formatDate.ts   # 날짜 변환 함수
+│   ├── index.ts        # 유틸리티 모음
+├── 📜 App.tsx          # 루트 컴포넌트
+├── 📜 main.tsx         # ReactDOM 렌더링 진입점
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📌 프로젝트 주요 기능
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+---
+
+## 📌 사용 기술 스택
+
+|------------|
+| **React** |
+| **Vite** |
+| **Zustand** |
+| **Tailwind CSS** |
+
+---
+
+## 📌 협업 규칙
+
+### 1️⃣ **Branch 전략**
+
+### 2️⃣ **Commit 메시지 규칙**
+
+---
