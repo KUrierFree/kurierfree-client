@@ -1,10 +1,20 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Landing from './pages/Landing';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
+import Dashboard from './pages/Dashboard';
+
 function App() {
   return (
-    <>
-      <div className="flex items-center justify-center h-[100px] bg-gray-100">
-        <h1 className="text-3xl font-bold text-blue-500">Hello, world!</h1>
-      </div>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 
