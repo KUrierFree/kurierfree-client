@@ -6,15 +6,57 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: #4D4D4D;
+  background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* 브랜드 색상 */
+  --color-primary: #4CAF4F;
+  --color-primary-disabled: #BFE0C3;
+  --color-primary-hover-bg: #E8F5E9; /* green-50에 해당하는 색상 */
+  --color-secondary: #2196F3;
+  --color-secondary-disabled: #C6E2F8;
+  --color-secondary-hover-bg: #E3F2FD; /* blue-50에 해당하는 색상 */
+  
+  /* 중립 색상 */
+  --color-black: #000000;
+  --color-dark: #1A1A1A;
+  --color-gray-dark: #4D4D4D;
+  --color-gray: #666666;
+  --color-gray-light: #E0E0E0;
+  --color-light-blue: #F5F7FA;
+  --color-white: #FFFFFF;
+  
+  /* 텍스트 색상 */
+  --text-primary: #4D4D4D;
+  --text-secondary: #717171;
+  
+  /* 특수 색상 */
+  --shadow-card: 0px 0px 16px 0px rgba(0,0,0,0.08);
+  
+  /* 레이아웃 */
+  --header-height: 4rem; /* 64px */
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
 }
 
 a {
@@ -24,14 +66,6 @@ a {
 }
 a:hover {
   color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
