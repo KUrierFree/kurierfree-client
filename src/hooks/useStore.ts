@@ -1,22 +1,5 @@
 import { create } from 'zustand';
-
-export type UserType = 'supporter' | 'disabled';
-export type GenderType = 'male' | 'female' | 'other';
-export type DisabilityType = 'visual' | 'hearing' | 'physical' | 'developmental' | 'other' | '';
-
-// 폼 데이터 타입 정의
-export interface SignupFormData {
-  studentId: string;
-  password: string;
-  passwordConfirm: string;
-  name: string;
-  department: string;
-  grade: string;
-  gender: GenderType;
-  userType: UserType;
-  disabilityType?: DisabilityType;
-  otherDisabilityDetail?: string;
-}
+import { SignupFormData, GenderType, UserType } from '../types/user';
 
 // 스토어 인터페이스
 interface SignupStore {

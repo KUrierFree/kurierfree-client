@@ -1,7 +1,8 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useSignupStore, GenderType, DisabilityType } from '../../hooks/useStore';
+import { useSignupStore } from '../../hooks/useStore';
+import { GenderType, DisabilityType } from '../../types/user';
 
 interface Step2FormData {
   name: string;

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { useSignupStore, UserType } from '../../hooks/useStore';
+import { useSignupStore } from '../../hooks/useStore';
+import { UserType } from '../../types/user';
 
 interface Step1FormData {
   studentId: string;
