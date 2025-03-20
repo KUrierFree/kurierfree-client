@@ -3,10 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import HeroSvg from '../assets/design/hero.svg?react';
-import UnlockSvg from '../assets/design/unlock.svg?react';
-import CountsSvg from '../assets/design/counts.svg?react';
-import CalenderSvg from '../assets/design/calender.svg?react';
+import HeroSvg from '../assets/images/hero.svg?react';
+import UnlockSvg from '../assets/images/unlock.svg?react';
+import CountsSvg from '../assets/images/counts.svg?react';
+import CalenderSvg from '../assets/images/calender.svg?react';
 
 const Landing = () => {
   return (

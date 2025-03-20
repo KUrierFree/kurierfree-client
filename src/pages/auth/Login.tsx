@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../components/layout/Header';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -25,12 +24,9 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <h2 className="text-center text-3xl font-bold text-gray-900">
-          KU Support
+        <h2 className="text-center text-3xl font-bold text-[var(--color-secondary)]">
+          LOGIN
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          건국대학교 장애학생 서포터즈 매칭 서비스
-        </p>
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
