@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import TextInput from './TextInput';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface LoginFormProps {
   onSubmit: (data: { studentId: string; password: string }) => void;
@@ -8,15 +7,15 @@ interface LoginFormProps {
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
-    studentId: '',
-    password: '',
+    studentId: "",
+    password: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -28,7 +27,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="studentId" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="studentId"
+          className="block text-sm font-medium text-gray-700"
+        >
           학번
         </label>
         <div className="mt-1">
@@ -46,7 +48,10 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       </div>
 
       <div>
-        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="password"
+          className="block text-sm font-medium text-gray-700"
+        >
           비밀번호
         </label>
         <div className="mt-1">
@@ -71,13 +76,19 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
             type="checkbox"
             className="h-4 w-4 text-[var(--color-secondary)] focus:ring-[var(--color-secondary)] border-gray-300 rounded"
           />
-          <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
+          <label
+            htmlFor="remember-me"
+            className="ml-2 block text-sm text-gray-900"
+          >
             로그인 상태 유지
           </label>
         </div>
 
         <div className="text-sm">
-          <Link to="/forgot-password" className="font-medium text-[var(--color-secondary)] hover:text-[var(--color-secondary-hover)]">
+          <Link
+            to="/forgot-password"
+            className="font-medium text-[var(--color-secondary)] hover:text-[var(--color-secondary-hover)]"
+          >
             비밀번호를 잊으셨나요?
           </Link>
         </div>
@@ -91,7 +102,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
           로그인
         </button>
       </div>
-      
+
       <div className="relative">
         <div className="absolute inset-0 flex items-center">
           <div className="w-full border-t border-gray-300" />
@@ -113,4 +124,4 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
   );
 };
 
-export default LoginForm; 
+export default LoginForm;
