@@ -2,7 +2,7 @@ import React from 'react';
 import { UseFormRegister, FieldError, RegisterOptions } from 'react-hook-form';
 import { usePasswordVisibility } from '../../hooks/usePasswordVisibility';
 import { VisibleIcon, HiddenIcon } from './icons/PasswordIcons';
-import IconButton from '../common/IconButton';
+import PasswordVisibilityToggle from '../common/PasswordVisibilityToggle';
 
 interface PasswordInputProps {
   id: string;
@@ -36,7 +36,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
           placeholder={placeholder}
           {...register(id, validation)}
         />
-        <IconButton
+        <PasswordVisibilityToggle
           size="sm"
           color="gray"
           onMouseDown={show}
@@ -47,7 +47,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
           ariaLabel={`${label} 보기`}
         >
           {visible ? <HiddenIcon /> : <VisibleIcon />}
-        </IconButton>
+        </PasswordVisibilityToggle>
       </div>
       {error && <p className="mt-2 text-sm text-red-600">{error.message}</p>}
     </div>

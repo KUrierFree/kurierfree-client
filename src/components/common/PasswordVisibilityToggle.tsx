@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 type ButtonSize = 'sm' | 'md' | 'lg';
 type ColorTheme = 'primary' | 'secondary' | 'gray';
 
-interface IconButtonProps {
+interface PasswordVisibilityToggleProps {
   children: ReactNode;
   size?: ButtonSize;
   color?: ColorTheme;
@@ -16,7 +16,7 @@ interface IconButtonProps {
   ariaLabel: string;
 }
 
-const IconButton: React.FC<IconButtonProps> = ({
+const PasswordVisibilityToggle: React.FC<PasswordVisibilityToggleProps> = ({
   children,
   size = 'md',
   color = 'gray',
@@ -60,4 +60,4 @@ const IconButton: React.FC<IconButtonProps> = ({
   );
 };
 
-export default IconButton; 
+export default PasswordVisibilityToggle; 
