@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Logo from '../../assets/common/logo/logo.svg?react';
-import LogoTitle from '../../assets/common/logo/logo-title.svg?react';
+import { Link } from "react-router-dom";
+import Logo from "../../assets/common/logo/logo.svg?react";
+import LogoTitle from "../../assets/common/logo/logo-title.svg?react";
 
 const Header = () => {
   return (
@@ -32,4 +31,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;

@@ -1,12 +1,11 @@
 /// <reference types="vite-plugin-svgr/client" />
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer';
-import HeroSvg from '../assets/landing/hero/hero.svg?react';
-import UnlockSvg from '../assets/auth/icons/unlock.svg?react';
-import CountsSvg from '../assets/landing/counts.svg?react';
-import CalenderSvg from '../assets/landing/calender.svg?react';
+import { Link } from "react-router-dom";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import HeroSvg from "../assets/landing/hero/hero.svg?react";
+import UnlockSvg from "../assets/auth/icons/unlock.svg?react";
+import CountsSvg from "../assets/landing/counts.svg?react";
+import CalenderSvg from "../assets/landing/calender.svg?react";
 
 const Landing = () => {
   return (
@@ -25,7 +24,7 @@ const Landing = () => {
                 KU 장애인 서포터즈 플랫폼
               </p>
               <p className="text-[40px] leading-[48px] text-[var(--color-primary)] mb-[27.84px] font-semibold">
-                더 편하게 지원하고 관리하세요 
+                더 편하게 지원하고 관리하세요
               </p>
               <p className="text-[20px] leading-[24px] text-[var(--text-secondary)] mb-[27.84px] font-medium">
                 장애 학생과 서포터즈를 하나로, KU의 배리어프리 솔루션
@@ -58,7 +57,8 @@ const Landing = () => {
                 일정부터 필기까지, <br /> 서포터즈 활동을 체계적으로!
               </p>
               <p className="text-[20px] leading-[24px] text-[var(--text-secondary)] mb-[27.84px] font-medium">
-                서포터즈 활동을 효율적으로 관리하세요.<br />
+                서포터즈 활동을 효율적으로 관리하세요.
+                <br />
                 시간표 확인 후 일정 등록 및 수정, 필기 기록까지 한곳에서 손쉽게!
               </p>
               <div className="flex gap-[16px]">
@@ -83,8 +83,10 @@ const Landing = () => {
                 긴급한 순간, <br /> 신속한 대응이 가능합니다.
               </p>
               <p className="text-[20px] leading-[24px] text-[var(--text-secondary)] mb-[27.84px] font-medium">
-                장애 학생별 긴급 연락처 및 응급 가이드를 확인하세요.<br />
-                필요한 순간 빠르게 도움을 요청하고, 안전한 캠퍼스를 만들어갑니다.
+                장애 학생별 긴급 연락처 및 응급 가이드를 확인하세요.
+                <br />
+                필요한 순간 빠르게 도움을 요청하고, 안전한 캠퍼스를
+                만들어갑니다.
               </p>
               <div className="flex gap-[16px]">
                 <Link
@@ -111,12 +113,14 @@ const Landing = () => {
             </div>
             <div className="flex flex-col max-w-[550px]">
               <p className="text-[40px] leading-[48px] text-[var(--text-primary)] mb-[16px] font-bold">
-              장애 학생과 서포터즈를 <br /> 쉽고 빠르게 연결합니다.
+                장애 학생과 서포터즈를 <br /> 쉽고 빠르게 연결합니다.
               </p>
               <p className="text-[20px] leading-[24px] text-[var(--text-secondary)] mb-[27.84px] font-medium">
-              관리자의 승인 아래 서포터즈 활동을 시작하세요.<br />
-              장애 학생의 서포터즈 신청부터 관리자의 서포터즈 매칭까지<br />
-              간편하게 처리할 수 있습니다.
+                관리자의 승인 아래 서포터즈 활동을 시작하세요.
+                <br />
+                장애 학생의 서포터즈 신청부터 관리자의 서포터즈 매칭까지
+                <br />
+                간편하게 처리할 수 있습니다.
               </p>
               <div className="flex gap-[16px]">
                 <Link
@@ -136,4 +140,4 @@ const Landing = () => {
   );
 };
 
-export default Landing; 
+export default Landing;

@@ -1,12 +1,11 @@
-import React from 'react';
-import LoginForm from '../../components/auth/LoginForm';
-import Header from '../../components/layout/Header';
-import Footer from '../../components/layout/Footer';
+import LoginForm from "../../components/auth/LoginForm";
+import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
 
 const Login = () => {
   const handleLogin = (data: { studentId: string; password: string }) => {
     // TODO: 로그인 로직 구현
-    console.log('로그인 시도:', data);
+    console.log("로그인 시도:", data);
   };
 
   return (
@@ -30,4 +29,4 @@ const Login = () => {
   );
 };
 
-export default Login; 
+export default Login;

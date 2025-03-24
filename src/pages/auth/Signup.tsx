@@ -1,7 +1,6 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import Header from '../../components/layout/Header';
-import Footer from '../../components/layout/Footer';
+import { Link, Outlet } from "react-router-dom";
+import Header from "../../components/layout/Header";
+import Footer from "../../components/layout/Footer";
 
 const Signup = () => {
   return (
@@ -25,7 +24,9 @@ const Signup = () => {
                   <div className="w-full border-t border-gray-300" />
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-2 bg-white text-gray-500">이미 계정이 있으신가요?</span>
+                  <span className="px-2 bg-white text-gray-500">
+                    이미 계정이 있으신가요?
+                  </span>
                 </div>
               </div>
 
@@ -48,4 +49,4 @@ const Signup = () => {
   );
 };
 
-export default Signup; 
+export default Signup;
