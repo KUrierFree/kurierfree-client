@@ -2,6 +2,7 @@ import React from 'react';
 import { UseFormRegister, FieldError, RegisterOptions } from 'react-hook-form';
 import { usePasswordVisibility } from '../../hooks/usePasswordVisibility';
 import { VisibleIcon, HiddenIcon } from './icons/PasswordIcons';
+import IconButton from '../common/IconButton';
 
 interface PasswordInputProps {
   id: string;
@@ -35,18 +36,18 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
           placeholder={placeholder}
           {...register(id, validation)}
         />
-        <button
-          type="button"
-          className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 outline-none border-none bg-transparent"
+        <IconButton
+          size="sm"
+          color="gray"
           onMouseDown={show}
           onMouseUp={hide}
           onMouseLeave={hide}
           onTouchStart={show}
           onTouchEnd={hide}
-          aria-label="비밀번호 보기"
+          ariaLabel={`${label} 보기`}
         >
           {visible ? <HiddenIcon /> : <VisibleIcon />}
-        </button>
+        </IconButton>
       </div>
       {error && <p className="mt-2 text-sm text-red-600">{error.message}</p>}
     </div>
