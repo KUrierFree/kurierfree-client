@@ -104,7 +104,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       <div>
         <Link
           to="/signup"
-          className="w-full flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium text-[var(--color-secondary)] bg-white border-[var(--color-secondary)] hover:bg-[var(--color-secondary)] hover:text-white"
+          className="w-full flex justify-center py-2 px-4 border rounded-md shadow-sm text-sm font-medium text-[var(--color-secondary)] bg-white border-[var(--color-secondary)]"
         >
           회원가입
         </Link>

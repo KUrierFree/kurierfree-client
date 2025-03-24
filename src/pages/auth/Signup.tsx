@@ -34,8 +34,7 @@ const Signup = () => {
                   to="/login"
                   className="w-full flex justify-center py-2 px-4 border rounded-md shadow-sm 
                   text-sm font-medium text-[var(--color-primary)]
-                  bg-white border-[var(--color-primary)]
-                  hover:bg-[var(--color-primary)] hover:text-white"
+                  bg-white border-[var(--color-primary)]"
                 >
                   로그인하기
                 </Link>
