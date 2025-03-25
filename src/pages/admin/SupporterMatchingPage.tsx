@@ -105,27 +105,24 @@ const SupporterMatchingPage: React.FC = () => {
     switch (activeTab) {
       case "student":
         return (
-          <div className="p-4">
-            <h2 className="text-xl font-semibold mb-4">장애학생 명단</h2>
+          <div>
             <BaseTable
               data={studentData}
               columns={studentColumns}
-              className="mt-4"
+              className=""
             />
           </div>
         );
       case "supporter":
         return (
-          <div className="p-4">
-            <h2 className="text-xl font-semibold mb-4">서포터즈 명단</h2>
-            <p className="text-gray-500">서포터즈 명단은 준비 중입니다.</p>
+          <div>
+            <p className="text-gray-500 p-4">서포터즈 명단은 준비 중입니다.</p>
           </div>
         );
       case "matching":
         return (
-          <div className="p-4">
-            <h2 className="text-xl font-semibold mb-4">매칭 결과</h2>
-            <p className="text-gray-500">매칭 결과는 준비 중입니다.</p>
+          <div>
+            <p className="text-gray-500 p-4">매칭 결과는 준비 중입니다.</p>
           </div>
         );
       default:
@@ -141,7 +138,7 @@ const SupporterMatchingPage: React.FC = () => {
           <TabNavigation
             activeTab={activeTab}
             onTabChange={handleTabChange}
-            className="px-4"
+            className=""
           />
           {renderContent()}
         </div>
