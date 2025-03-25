@@ -1,11 +1,17 @@
 import LoginForm from "../../components/auth/LoginForm";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const handleLogin = (data: { studentId: string; password: string }) => {
-    // TODO: 로그인 로직 구현
+    // TODO: 실제 로그인 로직은 나중에 구현
     console.log("로그인 시도:", data);
+    
+    // 임시로 로그인 성공 처리하여 AdminLandingPage로 리다이렉트
+    navigate("/admin");
   };
 
   return (
