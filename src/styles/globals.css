@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, Inter;
   line-height: 1.5;
   font-weight: 400;
   color: #4d4d4d;
@@ -29,6 +29,8 @@
   --color-gray-light: #e0e0e0;
   --color-light-blue: #f5f7fa;
   --color-white: #ffffff;
+  --color-success: #4caf4f;
+  --color-danger: #df5753;
 
   /* 텍스트 색상 */
   --text-primary: #4d4d4d;
