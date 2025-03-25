@@ -5,6 +5,7 @@ import Signup from "../pages/auth/Signup";
 import SignupStep1 from "../pages/auth/SignupStep1";
 import SignupStep2 from "../pages/auth/SignupStep2";
 import AdminLandingPage from "../pages/admin/AdminLandingPage";
+import SupporterMatchingPage from "../pages/admin/SupporterMatchingPage";
 
 const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AppRoutes = () => {
       
       {/* 관리자 페이지 */}
       <Route path="/admin" element={<AdminLandingPage />} />
+      <Route path="/admin/supporter-matching" element={<SupporterMatchingPage />} />
     </Routes>
   );
 };
