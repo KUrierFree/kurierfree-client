@@ -18,7 +18,7 @@ const MatchingStatusBadge: React.FC<MatchingStatusBadgeProps> = ({
   const statusConfig = {
     waiting: {
       text: "매칭 시작",
-      bgColor: "bg-gray-400",
+      bgColor: "bg-primary",
       textColor: "text-white",
     },
     pending: {
@@ -28,7 +28,7 @@ const MatchingStatusBadge: React.FC<MatchingStatusBadgeProps> = ({
     },
     completed: {
       text: "매칭 완료",
-      bgColor: "bg-primary",
+      bgColor: "bg-gray-400",
       textColor: "text-white",
     },
   };
