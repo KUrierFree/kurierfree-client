@@ -78,24 +78,35 @@ const StudentApplicantListTable: React.FC<StudentApplicantListProps> = ({
 
         {/* 테이블 바디 */}
         <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr
-              key={row.id}
-              className={`border-b ${
-                row.original.status === "확정"
-                  ? "bg-[var(--color-success)]"
-                  : row.original.status === "탈락"
-                    ? "bg-[var(--color-danger)]"
-                    : ""
-              }`}
-            >
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="p-3 border border-gray-300">
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
+          {students.length === 0 ? (
+            <tr className="border-b">
+              <td
+                colSpan={columns.length}
+                className="p-3 text-center text-gray-500"
+              >
+                지원한 서포터즈가 없습니다.
+              </td>
             </tr>
-          ))}
+          ) : (
+            table.getRowModel().rows.map((row) => (
+              <tr
+                key={row.id}
+                className={`border-b ${
+                  row.original.status === "확정"
+                    ? "bg-[var(--color-success)]"
+                    : row.original.status === "탈락"
+                      ? "bg-[var(--color-danger)]"
+                      : ""
+                }`}
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id} className="p-3 border border-gray-300">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
