@@ -1,8 +1,14 @@
 import React from "react";
 
-export type TabType = "matching" | "student" | "supporter";
+export type TabType = "matching" | "disabled_student" | "supporters";
+
+interface Tab {
+  id: TabType;
+  label: string;
+}
 
 interface TabNavigationProps {
+  tabs: Tab[];
   activeTab: TabType;
   onTabChange: (tab: TabType) => void;
   className?: string;
@@ -12,17 +18,11 @@ interface TabNavigationProps {
  * 상단 탭 네비게이션 컴포넌트
  */
 const TabNavigation: React.FC<TabNavigationProps> = ({
+  tabs,
   activeTab,
   onTabChange,
   className = "",
 }) => {
-  // 탭 항목 정의
-  const tabs = [
-    { id: "matching" as TabType, label: "매칭 결과" },
-    { id: "student" as TabType, label: "장애학생" },
-    { id: "supporter" as TabType, label: "서포터즈" },
-  ];
-
   return (
     <div className={`flex justify-end ${className}`}>
       <div className="flex w-[400px] overflow-visible">
