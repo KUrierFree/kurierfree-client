@@ -3,9 +3,13 @@ import { ColumnDef, TableMeta } from "@tanstack/react-table";
 import { DisabledStudent, Supporter } from "../types/user";
 import MatchingStatusBadge from "../components/table/MatchingStatusBadge";
 import TimeTableButton from "../components/table/TimeTableButton";
+import SupporterSelectionTable from "../components/table/SupporterSelectionTable";
 
 interface TableMetaWithTimeTable<T> extends TableMeta<T> {
   onTimeTableClick: () => void;
+  onMatchingStart: (student: DisabledStudent) => void;
+  onSupporterSelect: (student: DisabledStudent, supporterId: string) => void;
+  hasSelectingRow: boolean;
 }
 
 // 장애학생 테이블 컬럼 정의
@@ -29,9 +33,21 @@ export const DISABLED_STUDENT_COLUMNS: ColumnDef<DisabledStudent, any>[] = [
   {
     header: "매칭",
     accessorKey: "matchingStatus",
-    cell: ({ getValue }) => (
-      <MatchingStatusBadge status={getValue()} />
-    ),
+    cell: ({ getValue, row, table }) => {
+      const status = getValue();
+      if (status === "waiting") {
+        return (
+          <button
+            onClick={() => (table.options.meta as any).onMatchingStart(row.original)}
+            className="px-3 py-1 text-sm bg-primary text-white rounded-md hover:bg-primary/80"
+            disabled={(table.options.meta as any).hasSelectingRow}
+          >
+            매칭 시작
+          </button>
+        );
+      }
+      return <MatchingStatusBadge status={status} />;
+    },
   },
   {
     header: "시간표",
