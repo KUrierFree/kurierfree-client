@@ -25,7 +25,7 @@ const columns: ColumnDef<Student>[] = [
   { accessorKey: "grade", header: "학년" },
 ];
 
-const StudentTable: React.FC<StudentTableProps> = ({ students }) => {
+const StudentApplicantTable: React.FC<StudentTableProps> = ({ students }) => {
   const table = useReactTable({
     data: students,
     columns,
@@ -71,4 +71,4 @@ const StudentTable: React.FC<StudentTableProps> = ({ students }) => {
   );
 };
 
-export default StudentTable;
+export default StudentApplicantTable;

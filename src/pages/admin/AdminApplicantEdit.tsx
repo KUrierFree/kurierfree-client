@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import StudentTable from "../../components/admin/StudentApplicantTable";
+import StudentApplicantTable from "../../components/admin/StudentApplicantTable";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 
@@ -39,7 +39,7 @@ const AdminApplicantEdit: React.FC = () => {
     <div className="min-h-screen bg-white">
       <Header />
       <div className="h-[var(--header-height)]"></div>
-      <StudentTable students={students} />
+      <StudentApplicantTable students={students} />
       <Footer />
     </div>
   );
