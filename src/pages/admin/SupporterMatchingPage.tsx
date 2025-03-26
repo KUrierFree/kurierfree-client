@@ -4,8 +4,8 @@ import Footer from "../../components/layout/Footer";
 import TabNavigation, { TabType } from "../../components/common/TabNavigation";
 import BaseTable from "../../components/table/BaseTable";
 import EmptyTable from "../../components/table/EmptyTable";
-import MatchingStatusBadge from "../../components/common/MatchingStatusBadge";
-import TimeTableModal from "../../components/common/TimeTableModal";
+import MatchingStatusBadge from "../../components/table/MatchingStatusBadge";
+import TimeTableModal from "../../components/table/TimeTableModal";
 import { DisabledStudent, Supporter } from "../../types/user";
 import { DISABLED_STUDENT_COLUMNS, SUPPORTERS_COLUMNS } from "../../constants/tables";
 
