@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 import StudentApplicantListTable from "../../components/admin/StudentApplicantListTable";
@@ -58,7 +58,7 @@ const dummyApplicants: Student[] = [
 ];
 
 const AdminApplicantEdit: React.FC = () => {
-  const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const [_selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
   // 상세정보 보기 클릭 시 실행할 핸들러
   const handleDetailClick = (student: Student) => {
