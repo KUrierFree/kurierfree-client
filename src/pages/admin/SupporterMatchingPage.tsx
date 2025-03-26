@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
 import TabNavigation, { TabType } from "../../components/common/TabNavigation";
@@ -14,22 +14,27 @@ const SupporterMatchingPage: React.FC = () => {
   // 현재 활성화된 탭 상태
   const [activeTab, setActiveTab] = useState<TabType>("disabled_student");
   const [isTimeTableModalOpen, setIsTimeTableModalOpen] = useState(false);
-
-  // 장애학생 임시 데이터 (실제 프로젝트에서는 API 호출로 대체)
-  const disabled_studentData: DisabledStudent[] = [
+  const [disabledStudents, setDisabledStudents] = useState<DisabledStudent[]>([
+    {
+      name: "김건국",
+      department: "컴퓨터공학부",
+      gender: "남성",
+      disabilityType: "시각장애",
+      matchingStatus: "waiting",
+    },
     {
       name: "김철수",
       department: "컴퓨터공학부",
       gender: "남성",
       disabilityType: "시각장애",
-      matchingStatus: "completed",
+      matchingStatus: "waiting",
     },
     {
       name: "이영희",
       department: "경영학과",
       gender: "여성",
       disabilityType: "청각장애",
-      matchingStatus: "selecting",
+      matchingStatus: "waiting",
     },
     {
       name: "박민수",
@@ -38,7 +43,7 @@ const SupporterMatchingPage: React.FC = () => {
       disabilityType: "지체장애",
       matchingStatus: "waiting",
     },
-  ];
+  ]);
 
   // 서포터즈 임시 데이터 (실제 프로젝트에서는 API 호출로 대체)
   const supportersData: Supporter[] = [
@@ -188,6 +193,38 @@ const SupporterMatchingPage: React.FC = () => {
     },
   ];
 
+  // 매칭 시작 중인 행이 있는지 확인
+  const hasSelectingRow = useMemo(() => {
+    return disabledStudents.some(student => student.matchingStatus === "selecting");
+  }, [disabledStudents]);
+
+  // 매칭 시작 버튼 클릭 핸들러
+  const handleMatchingStart = useCallback((student: DisabledStudent) => {
+    setDisabledStudents(prev => 
+      prev.map(s => 
+        s.name === student.name ? { ...s, matchingStatus: "selecting" } : s
+      )
+    );
+  }, []);
+
+  // 서포터즈 선택 핸들러
+  const handleSupporterSelect = useCallback((student: DisabledStudent, supporterId: string) => {
+    setDisabledStudents(prev => 
+      prev.map(s => 
+        s.name === student.name ? { ...s, matchingStatus: "completed" } : s
+      )
+    );
+  }, []);
+
+  const tableOptions = {
+    meta: {
+      onTimeTableClick: () => setIsTimeTableModalOpen(true),
+      onMatchingStart: handleMatchingStart,
+      onSupporterSelect: handleSupporterSelect,
+      hasSelectingRow,
+    },
+  };
+
   // 탭 변경 핸들러
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab as typeof activeTab);
@@ -195,22 +232,14 @@ const SupporterMatchingPage: React.FC = () => {
 
   // 현재 탭에 따른 콘텐츠 렌더링
   const renderContent = () => {
-    const tableOptions = {
-      meta: {
-        onTimeTableClick: () => setIsTimeTableModalOpen(true),
-      },
-    };
-
     switch (activeTab) {
       case "disabled_student":
         return (
-          <div>
-            <BaseTable
-              data={disabled_studentData}
-              columns={DISABLED_STUDENT_COLUMNS}
-              tableOptions={tableOptions}
-            />
-          </div>
+          <BaseTable
+            data={disabledStudents}
+            columns={DISABLED_STUDENT_COLUMNS}
+            tableOptions={tableOptions}
+          />
         );
       case "supporters":
         return (
