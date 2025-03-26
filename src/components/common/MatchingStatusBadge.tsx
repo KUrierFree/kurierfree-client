@@ -1,6 +1,5 @@
 import React from "react";
-
-export type MatchingStatus = "waiting" | "pending" | "completed";
+import { MatchingStatus } from "../../types/user";
 
 interface MatchingStatusBadgeProps {
   status: MatchingStatus;
@@ -21,7 +20,7 @@ const MatchingStatusBadge: React.FC<MatchingStatusBadgeProps> = ({
       bgColor: "bg-primary",
       textColor: "text-white",
     },
-    pending: {
+    selecting: {
       text: "매칭 중",
       bgColor: "bg-primary-disabled",
       textColor: "text-white",
