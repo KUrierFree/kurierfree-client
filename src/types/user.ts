@@ -8,9 +8,9 @@ export type GenderType = 'male' | 'female' | 'other';
 export type DisabilityType = 'visual' | 'hearing' | 'physical' | 'developmental' | 'other' | '';
 
 // 매칭 상태
-// waiting: 매칭 미완료 (아직 매칭이 시작되지 않음)
-// selecting: 서포터즈 선택 중 (서포터즈 목록이 열린 상태)
-// completed: 매칭 완료 (매칭이 성사된 상태)
+// waiting: 매칭 미완료
+// selecting: 서포터즈 선택 중 (토글 목록이 열린 상태)
+// completed: 매칭 완료
 export type MatchingStatus = "waiting" | "selecting" | "completed";
 
 // 회원가입 폼 데이터 타입 정의
