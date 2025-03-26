@@ -6,7 +6,8 @@ import BaseTable from "../../components/table/BaseTable";
 import EmptyTable from "../../components/table/EmptyTable";
 import MatchingStatusBadge from "../../components/common/MatchingStatusBadge";
 import TimeTableModal from "../../components/common/TimeTableModal";
-import { DisabledStudent, Supporter } from "../../types/matching";
+import { DisabledStudent, Supporter } from "../../types/user";
+import { DISABLED_STUDENT_COLUMNS, SUPPORTERS_COLUMNS } from "../../constants/tables";
 
 const SupporterMatchingPage: React.FC = () => {
 
@@ -36,57 +37,6 @@ const SupporterMatchingPage: React.FC = () => {
       gender: "male",
       disabilityType: "physical",
       matchingStatus: "waiting",
-    },
-  ];
-
-  // 장애학생 테이블 컬럼 정의
-  const disabled_studentColumns = [
-    {
-      header: "이름",
-      accessorKey: "name",
-    },
-    {
-      header: "학과",
-      accessorKey: "department",
-    },
-    {
-      header: "성별",
-      accessorKey: "gender",
-    },
-    {
-      header: "장애유형",
-      accessorKey: "disabilityType",
-    },
-    {
-      header: "매칭",
-      accessorKey: "matchingStatus",
-      cell: ({ getValue }: any) => (
-        <MatchingStatusBadge status={getValue() as any} />
-      ),
-    },
-    {
-      header: "시간표",
-      cell: () => (
-        <button
-          className="p-1 text-gray-500 hover:text-gray-700"
-          onClick={() => setIsTimeTableModalOpen(true)}
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
-        </button>
-      ),
     },
   ];
 
@@ -238,57 +188,6 @@ const SupporterMatchingPage: React.FC = () => {
     },
   ];
 
-  // 서포터즈 테이블 컬럼 정의
-  const supportersColumns = [
-    {
-      header: "이름",
-      accessorKey: "name",
-    },
-    {
-      header: "학과",
-      accessorKey: "department",
-    },
-    {
-      header: "성별",
-      accessorKey: "gender",
-    },
-    {
-      header: "학년",
-      accessorKey: "grade",
-    },
-    {
-      header: "매칭",
-      accessorKey: "matchingStatus",
-      cell: ({ getValue }: any) => (
-        <MatchingStatusBadge status={getValue() as any} />
-      ),
-    },
-    {
-      header: "시간표",
-      cell: () => (
-        <button
-          className="p-1 text-gray-500 hover:text-gray-700"
-          onClick={() => setIsTimeTableModalOpen(true)}
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={1.5}
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
-        </button>
-      ),
-    },
-  ];
-  
   // 탭 변경 핸들러
   const handleTabChange = (tab: TabType) => {
     setActiveTab(tab as typeof activeTab);
@@ -296,13 +195,20 @@ const SupporterMatchingPage: React.FC = () => {
 
   // 현재 탭에 따른 콘텐츠 렌더링
   const renderContent = () => {
+    const tableOptions = {
+      meta: {
+        onTimeTableClick: () => setIsTimeTableModalOpen(true),
+      },
+    };
+
     switch (activeTab) {
       case "disabled_student":
         return (
           <div>
             <BaseTable
               data={disabled_studentData}
-              columns={disabled_studentColumns}
+              columns={DISABLED_STUDENT_COLUMNS}
+              tableOptions={tableOptions}
             />
           </div>
         );
@@ -311,7 +217,8 @@ const SupporterMatchingPage: React.FC = () => {
           <div>
             <BaseTable
               data={supportersData}
-              columns={supportersColumns}
+              columns={SUPPORTERS_COLUMNS}
+              tableOptions={tableOptions}
             />
           </div>
         );
