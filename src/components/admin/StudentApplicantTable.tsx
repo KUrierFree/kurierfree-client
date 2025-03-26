@@ -6,7 +6,6 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 
-// 학생 데이터 타입 정의
 interface Student {
   name: string;
   department: string;
@@ -14,13 +13,9 @@ interface Student {
   grade: number;
 }
 
-// 샘플 데이터
-const studentData: Student[] = [
-  { name: "김철수", department: "컴퓨터공학과", gender: "남", grade: 3 },
-  { name: "이영희", department: "전자공학과", gender: "여", grade: 2 },
-  { name: "박민수", department: "경영학과", gender: "남", grade: 4 },
-  { name: "최수지", department: "화학공학과", gender: "여", grade: 1 },
-];
+interface StudentTableProps {
+  students: Student[]; // 부모 컴포넌트에서 전달할 데이터
+}
 
 // 컬럼 정의
 const columns: ColumnDef<Student>[] = [
@@ -30,15 +25,15 @@ const columns: ColumnDef<Student>[] = [
   { accessorKey: "grade", header: "학년" },
 ];
 
-const StudentTable: React.FC = () => {
+const StudentTable: React.FC<StudentTableProps> = ({ students }) => {
   const table = useReactTable({
-    data: studentData,
+    data: students,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
 
   return (
-    <div className="p-4">
+    <div className="p-4 border border-gray-300 rounded-lg shadow">
       <table className="w-full border-collapse border border-gray-300">
         {/* 테이블 헤더 */}
         <thead className="bg-gray-100">
