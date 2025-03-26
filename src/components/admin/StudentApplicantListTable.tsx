@@ -33,7 +33,7 @@ const columns: ColumnDef<Student>[] = [
     cell: ({ row }) => (
       <Button
         variant="table"
-        className="w-[50%]"
+        className="w-full flex justify-center px-[30%]"
         onClick={() => row.original && row.original.onDetailClick(row.original)}
       >
         상세 보기
