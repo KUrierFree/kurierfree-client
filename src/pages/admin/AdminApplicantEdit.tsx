@@ -61,12 +61,13 @@ const dummyApplicants: Student[] = [
 
 const AdminApplicantEdit: React.FC = () => {
   const navigate = useNavigate();
-  const [_selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const [_selectedStudent, _setSelectedStudent] = useState<Student | null>(
+    null
+  );
 
   // 상세정보 보기 클릭 시 실행할 핸들러
   const handleDetailClick = (student: Student) => {
-    alert(`상세정보 보기: ${student.name}`);
-    setSelectedStudent(student);
+    console.log(student);
   };
 
   return (
