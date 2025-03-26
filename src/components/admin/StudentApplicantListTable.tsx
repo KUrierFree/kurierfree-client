@@ -33,6 +33,7 @@ const columns: ColumnDef<Student>[] = [
     cell: ({ row }) => (
       <Button
         variant="table"
+        className="w-[50%]"
         onClick={() => row.original && row.original.onDetailClick(row.original)}
       >
         상세 보기
@@ -55,7 +56,7 @@ const StudentApplicantListTable: React.FC<StudentApplicantListProps> = ({
   });
 
   return (
-    <div className="p-4 border border-gray-300 rounded-lg shadow">
+    <div className="bg-white">
       <table className="w-full border-collapse border border-gray-300">
         {/* 테이블 헤더 */}
         <thead className="bg-gray-100">
