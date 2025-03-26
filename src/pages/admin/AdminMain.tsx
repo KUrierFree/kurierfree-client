@@ -7,7 +7,7 @@ const AdminMain = () => {
 
   // 카드 데이터 (text, 배경색, 이동할 경로)
   const cards = [
-    { text: "지원자 관리", bgColor: "bg-[#bfe0c3]", path: "/admin/applicants" },
+    { text: "지원자 관리", bgColor: "bg-[#bfe0c3]", path: "/admin/applicant" },
     // todo : 서포터즈 매칭이랑 route 조정
     { text: "서포터즈 매칭", bgColor: "bg-[#c6e2f8]", path: "/admin/matching" },
   ];

@@ -33,7 +33,7 @@ const StudentApplicantTable: React.FC<StudentTableProps> = ({ students }) => {
   });
 
   return (
-    <div className="p-4 border border-gray-300 rounded-lg shadow">
+    <div className="bg-white">
       <table className="w-full border-collapse border border-gray-300">
         {/* 테이블 헤더 */}
         <thead className="bg-gray-100">

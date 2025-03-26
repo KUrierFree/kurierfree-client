@@ -71,37 +71,39 @@ const AdminApplicantMain: React.FC = () => {
     return <div className="p-4 text-gray-600">📦 데이터 로딩 중...</div>;
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Header />
-      <div className="h-[var(--header-height)]"></div>
-      <StudentApplicantTable students={students} />
-      <div className="h-[500px] flex-row items-center justify-center">
-        <Button
-          variant="primary"
-          onClick={() => {
+      <div className="min-h-screen bg-[#f5f7f9] flex flex-col items-center justify-center">
+        <div className="w-[70%] inline-flex flex-col justify-start px-[151px] py-[95px] gap-[100px]">
+          <StudentApplicantTable students={students} />
+          <div className="flex flex-row items-center justify-center gap-[50px]">
+            <Button
+              variant="primary"
+              onClick={() => {
+                setIsOpen(false);
+                setTimeout(() => {
+                  navigate("/admin/applicant/list");
+                }, 0);
+              }}
+            >
+              수정
+            </Button>
+            <Button variant="secondary" onClick={() => setIsOpen(true)}>
+              이번 학기 선발 완료
+            </Button>
+          </div>
+        </div>
+        <AdminConfirmModal
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          onConfirm={() => {
+            alert("확정되었습니다!");
             setIsOpen(false);
-            setTimeout(() => {
-              navigate("/admin/applicant/list");
-            }, 0);
           }}
-        >
-          수정
-        </Button>
-        <Button variant="secondary" onClick={() => setIsOpen(true)}>
-          이번 학기 선발 완료
-        </Button>
+        />
       </div>
-
-      <AdminConfirmModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        onConfirm={() => {
-          alert("확정되었습니다!");
-          setIsOpen(false);
-        }}
-      />
       <Footer />
-    </div>
+    </>
   );
 };
 
