@@ -5,6 +5,7 @@ import TabNavigation, { TabType } from "../../components/common/TabNavigation";
 import BaseTable from "../../components/table/BaseTable";
 import EmptyTable from "../../components/table/EmptyTable";
 import MatchingStatusBadge from "../../components/common/MatchingStatusBadge";
+import TimeTableModal from "../../components/common/TimeTableModal";
 
 // 임시 타입 정의 (실제 프로젝트에서는 별도 파일로 분리)
 interface Student {
@@ -18,6 +19,7 @@ interface Student {
 const SupporterMatchingPage: React.FC = () => {
   // 현재 활성화된 탭 상태
   const [activeTab, setActiveTab] = useState<TabType>("student");
+  const [isTimeTableModalOpen, setIsTimeTableModalOpen] = useState(false);
 
   // 임시 데이터 (실제 프로젝트에서는 API 호출로 대체)
   const studentData: Student[] = [
@@ -74,7 +76,7 @@ const SupporterMatchingPage: React.FC = () => {
       cell: () => (
         <button
           className="p-1 text-gray-500 hover:text-gray-700"
-          onClick={() => alert("시간표 모달이 열립니다")}
+          onClick={() => setIsTimeTableModalOpen(true)}
         >
           <svg
             className="w-5 h-5"
@@ -144,6 +146,10 @@ const SupporterMatchingPage: React.FC = () => {
         </div>
       </main>
       <Footer />
+      <TimeTableModal
+        isOpen={isTimeTableModalOpen}
+        onClose={() => setIsTimeTableModalOpen(false)}
+      />
     </div>
   );
 };
