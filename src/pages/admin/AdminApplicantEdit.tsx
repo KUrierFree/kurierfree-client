@@ -38,6 +38,7 @@ const AdminApplicantEdit: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      <div className="h-[var(--header-height)]"></div>
       <StudentTable students={students} />
       <Footer />
     </div>

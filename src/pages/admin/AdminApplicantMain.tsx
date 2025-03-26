@@ -12,6 +12,7 @@ const AdminApplicantMain: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
+      <div className="h-[var(--header-height)]"></div>
       <div className="h-[500px] flex-row items-center justify-center">
         <Button
           variant="primary"
