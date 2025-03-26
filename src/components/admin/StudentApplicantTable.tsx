@@ -9,8 +9,8 @@ import {
 interface Student {
   name: string;
   department: string;
-  gender: "남" | "여";
-  grade: number;
+  gender: "남성" | "여성";
+  grade: string;
 }
 
 interface StudentTableProps {

@@ -6,18 +6,48 @@ import Footer from "../../components/layout/Footer";
 interface Student {
   name: string;
   department: string;
-  gender: "남" | "여";
-  grade: number;
+  gender: "남성" | "여성";
+  grade: string;
 }
 
 // ✅ 임시 더미 데이터 (API 준비 전 사용)
 const dummyStudents: Student[] = [
-  { name: "김철수", department: "컴퓨터공학과", gender: "남", grade: 3 },
-  { name: "이영희", department: "전자공학과", gender: "여", grade: 2 },
-  { name: "박민수", department: "경영학과", gender: "남", grade: 4 },
-  { name: "최수지", department: "화학공학과", gender: "여", grade: 1 },
-  { name: "한지민", department: "생명공학과", gender: "여", grade: 3 },
-  { name: "정우성", department: "기계공학과", gender: "남", grade: 4 },
+  {
+    name: "김철수",
+    department: "컴퓨터공학과",
+    gender: "남성",
+    grade: "3학년 1학기",
+  },
+  {
+    name: "이영희",
+    department: "전자공학과",
+    gender: "여성",
+    grade: "3학년 1학기",
+  },
+  {
+    name: "박민수",
+    department: "경영학과",
+    gender: "남성",
+    grade: "3학년 1학기",
+  },
+  {
+    name: "최수지",
+    department: "화학공학과",
+    gender: "여성",
+    grade: "3학년 1학기",
+  },
+  {
+    name: "한지민",
+    department: "생명공학과",
+    gender: "여성",
+    grade: "3학년 1학기",
+  },
+  {
+    name: "정우성",
+    department: "기계공학과",
+    gender: "남성",
+    grade: "3학년 1학기",
+  },
 ];
 
 const AdminApplicantEdit: React.FC = () => {
