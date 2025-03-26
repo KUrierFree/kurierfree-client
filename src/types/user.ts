@@ -2,10 +2,10 @@
 export type UserType = 'supporter' | 'disabled';
 
 // 성별 타입
-export type GenderType = 'male' | 'female' | 'other';
+export type GenderType = '남성' | '여성' | '기타';
 
 // 장애 유형
-export type DisabilityType = 'visual' | 'hearing' | 'physical' | 'developmental' | 'other' | '';
+export type DisabilityType = '시각장애' | '청각장애' | '지체장애' | '발달장애' | '기타' | '';
 
 // 매칭 상태
 // waiting: 매칭 미완료
