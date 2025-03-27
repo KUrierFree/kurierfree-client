@@ -33,6 +33,7 @@ const columns: ColumnDef<Student>[] = [
     cell: ({ row }) => (
       <Button
         variant="table"
+        className="w-full flex justify-center px-[30%]"
         onClick={() => row.original && row.original.onDetailClick(row.original)}
       >
         상세 보기
@@ -55,7 +56,7 @@ const StudentApplicantListTable: React.FC<StudentApplicantListProps> = ({
   });
 
   return (
-    <div className="p-4 border border-gray-300 rounded-lg shadow">
+    <div className="bg-white">
       <table className="w-full border-collapse border border-gray-300">
         {/* 테이블 헤더 */}
         <thead className="bg-gray-100">
@@ -78,24 +79,35 @@ const StudentApplicantListTable: React.FC<StudentApplicantListProps> = ({
 
         {/* 테이블 바디 */}
         <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr
-              key={row.id}
-              className={`border-b ${
-                row.original.status === "확정"
-                  ? "bg-[var(--color-success)]"
-                  : row.original.status === "탈락"
-                    ? "bg-[var(--color-danger)]"
-                    : ""
-              }`}
-            >
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="p-3 border border-gray-300">
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
+          {students.length === 0 ? (
+            <tr className="border-b">
+              <td
+                colSpan={columns.length}
+                className="p-3 text-center text-gray-500"
+              >
+                지원한 서포터즈가 없습니다.
+              </td>
             </tr>
-          ))}
+          ) : (
+            table.getRowModel().rows.map((row) => (
+              <tr
+                key={row.id}
+                className={`border-b ${
+                  row.original.status === "확정"
+                    ? "bg-[var(--color-success)]"
+                    : row.original.status === "탈락"
+                      ? "bg-[var(--color-danger)]"
+                      : ""
+                }`}
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id} className="p-3 border border-gray-300">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
     </div>
