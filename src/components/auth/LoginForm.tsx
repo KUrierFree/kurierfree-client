@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Button from "../common/Button";
 
 interface LoginFormProps {
   onSubmit: (data: { studentId: string; password: string }) => void;
@@ -95,12 +96,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit }) => {
       </div>
 
       <div>
-        <button
-          type="submit"
-          className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--color-secondary)] hover:bg-white hover:text-[var(--color-secondary)] hover:border-[var(--color-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-secondary)]"
-        >
+        <Button type="submit" variant="secondary">
           로그인
-        </button>
+        </Button>
       </div>
 
       <div className="relative">

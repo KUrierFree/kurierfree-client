@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: system-ui, Inter;
   line-height: 1.5;
   font-weight: 400;
-  color: #4D4D4D;
+  color: #4d4d4d;
   background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,29 +14,31 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* 브랜드 색상 */
-  --color-primary: #4CAF4F;
-  --color-primary-disabled: #BFE0C3;
-  --color-primary-hover-bg: #E8F5E9; /* green-50에 해당하는 색상 */
-  --color-secondary: #2196F3;
-  --color-secondary-disabled: #C6E2F8;
-  --color-secondary-hover-bg: #E3F2FD; /* blue-50에 해당하는 색상 */
-  
+  --color-primary: #4caf4f;
+  --color-primary-disabled: #bfe0c3;
+  --color-primary-hover-bg: #e8f5e9; /* green-50에 해당하는 색상 */
+  --color-secondary: #2196f3;
+  --color-secondary-disabled: #c6e2f8;
+  --color-secondary-hover-bg: #e3f2fd; /* blue-50에 해당하는 색상 */
+
   /* 중립 색상 */
   --color-black: #000000;
-  --color-dark: #1A1A1A;
-  --color-gray-dark: #4D4D4D;
+  --color-dark: #1a1a1a;
+  --color-gray-dark: #4d4d4d;
   --color-gray: #666666;
-  --color-gray-light: #E0E0E0;
-  --color-light-blue: #F5F7FA;
-  --color-white: #FFFFFF;
-  
+  --color-gray-light: #e0e0e0;
+  --color-light-blue: #f5f7fa;
+  --color-white: #ffffff;
+  --color-success: #4caf4f;
+  --color-danger: #df5753;
+
   /* 텍스트 색상 */
-  --text-primary: #4D4D4D;
+  --text-primary: #4d4d4d;
   --text-secondary: #717171;
-  
+
   /* 특수 색상 */
-  --shadow-card: 0px 0px 16px 0px rgba(0,0,0,0.08);
-  
+  --shadow-card: 0px 0px 16px 0px rgba(0, 0, 0, 0.08);
+
   /* 레이아웃 */
   --header-height: 4rem; /* 64px */
 }
@@ -48,7 +50,12 @@ body {
 }
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-bold;
   }
 }
@@ -80,13 +87,6 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
