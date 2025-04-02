@@ -60,6 +60,7 @@ const columns: ColumnDef<DisabledStudent>[] = [
     cell: ({ row }) => (
       <TimeTableButton student={row.original} />
     ),
+    size: 80,
   },
   { 
     id: "actions",
@@ -97,6 +98,9 @@ const DisabledStudentTable: React.FC<DisabledStudentTableProps> = ({ data, table
                 <th
                   key={header.id}
                   className="p-3 border-x border-gray-300 text-left bg-gray-50"
+                  style={{ 
+                    width: header.column.getSize() !== 150 ? header.column.getSize() : undefined 
+                  }}
                 >
                   {flexRender(
                     header.column.columnDef.header,
@@ -122,7 +126,13 @@ const DisabledStudentTable: React.FC<DisabledStudentTableProps> = ({ data, table
               <React.Fragment key={row.id}>
                 <tr>
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="p-3 border-x border-gray-300 border-b">
+                    <td 
+                      key={cell.id} 
+                      className="p-3 border-x border-gray-300 border-b"
+                      style={{ 
+                        width: cell.column.getSize() !== 150 ? cell.column.getSize() : undefined 
+                      }}
+                    >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ))}

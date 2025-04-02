@@ -63,14 +63,8 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data }) => {
     columnHelper.display({
       id: "timeTable",
       header: "시간표",
-      cell: ({ row }) => {
-        // 행 ID에서 인덱스를 추출
-        const rowIndex = parseInt(row.id.split('_')[1]);
-        // 해당 인덱스의 학생 정보 가져오기
-        const student = groupedData[rowIndex];
-        
-        return student ? <TimeTableButton student={student} /> : null;
-      },
+      cell: ({ row }) => <TimeTableButton student={row.original} />,
+      size: 80, // 칼럼 너비 설정
     }),
   ];
   
@@ -90,6 +84,9 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data }) => {
                 <th
                   key={header.id}
                   className="px-3 py-2 text-xs text-gray-500 border border-gray-200"
+                  style={{ 
+                    width: header.column.getSize() !== 150 ? header.column.getSize() : undefined 
+                  }}
                 >
                   {flexRender(
                     header.column.columnDef.header,
@@ -108,6 +105,9 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data }) => {
                   <td
                     key={cell.id}
                     className="px-3 py-2 text-sm text-gray-600 border border-gray-200"
+                    style={{ 
+                      width: cell.column.getSize() !== 150 ? cell.column.getSize() : undefined 
+                    }}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
