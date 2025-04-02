@@ -1,5 +1,5 @@
 import React from "react";
-import MatchingResultTable from "../../../../components/admin/matching/table/MatchingResultTable";
+import MatchingResultTable from "../../../../components/admin/matching/MatchingResult/MatchingResultTable";
 import { DisabledStudent, Supporter } from "../../../../types/user";
 
 interface MatchingResultTabProps {
