@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import MatchingResultTable from "../../../../components/admin/matching/table/MatchingResultTable";
 import { DisabledStudent, Supporter } from "../../../../types/user";
-import TimeTableModal from "../../../../components/admin/matching/TimeTableModal";
 
 const DUMMY_MATCHING_RESULTS = [
   {
@@ -109,34 +108,8 @@ const DUMMY_MATCHING_RESULTS = [
 ];
 
 const MatchingResultTab: React.FC = () => {
-  const [selectedStudent, setSelectedStudent] = useState<DisabledStudent | null>(null);
-  const [isTimeTableModalOpen, setIsTimeTableModalOpen] = useState(false);
-
-  const handleTimeTableClick = (student: DisabledStudent) => {
-    setSelectedStudent(student);
-    setIsTimeTableModalOpen(true);
-  };
-
-  const handleCloseTimeTableModal = () => {
-    setIsTimeTableModalOpen(false);
-    setSelectedStudent(null);
-  };
-
   return (
-    <>
-      <MatchingResultTable 
-        data={DUMMY_MATCHING_RESULTS} 
-        onTimeTableClick={handleTimeTableClick}
-      />
-      
-      {selectedStudent && (
-        <TimeTableModal
-          student={selectedStudent}
-          isOpen={isTimeTableModalOpen}
-          onClose={handleCloseTimeTableModal}
-        />
-      )}
-    </>
+    <MatchingResultTable data={DUMMY_MATCHING_RESULTS} />
   );
 };
 

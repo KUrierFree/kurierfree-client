@@ -13,10 +13,9 @@ import {
 import { DisabledStudent } from '../../../../types/user';
 import SupporterSelectingTable from './SupporterSelectingTable';
 import Button from '../../../common/Button';
-import TimeTableButton from '../TimeTableButton';
+import TimeTableButton from '../TimeTableButton.tsx';
 
 interface TableMeta {
-  onTimeTableClick: (student: DisabledStudent) => void;
   onMatchingStart: (student: DisabledStudent) => void;
   onSupporterSelect: (student: DisabledStudent, supporterId: string) => void;
 }
@@ -51,7 +50,9 @@ const columns: ColumnDef<DisabledStudent>[] = [
   {
     id: "timeTable",
     header: "시간표",
-    cell: () => <TimeTableButton onClick={() => {}} />,
+    cell: ({ row }) => (
+      <TimeTableButton student={row.original} />
+    ),
   },
   { 
     id: "actions",

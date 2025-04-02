@@ -1,79 +1,82 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { ColumnDef, createColumnHelper, useReactTable, getCoreRowModel, flexRender } from "@tanstack/react-table";
 import { DisabledStudent, Supporter } from "../../../../types/user";
 import SupporterMatchedTable from "./SupporterMatchedTable";
+import TimeTableButton from "../TimeTableButton.tsx";
+
+// DisabledStudent에 supporters 필드 추가
+interface DisabledStudentWithSupporters extends DisabledStudent {
+  supporters: Supporter[];
+}
 
 interface MatchingResultTableProps {
   data: {
     disabledStudent: DisabledStudent;
     supporter: Supporter;
   }[];
-  onTimeTableClick?: (student: DisabledStudent) => void;
 }
 
-// 장애학생별로 데이터 그룹화하는 함수
-const groupByDisabledStudent = (data: MatchingResultTableProps["data"]) => {
-  const groupedData = data.reduce((acc, curr) => {
-    const key = curr.disabledStudent.name;
-    if (!acc[key]) {
-      acc[key] = {
-        disabledStudent: curr.disabledStudent,
-        supporters: [],
-      };
-    }
-    acc[key].supporters.push(curr.supporter);
-    return acc;
-  }, {} as Record<string, { disabledStudent: DisabledStudent; supporters: Supporter[] }>);
+const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data }) => {
+  // 장애학생별로 서포터를 그룹화
+  const groupByDisabledStudent = useCallback((data: MatchingResultTableProps["data"]): DisabledStudentWithSupporters[] => {
+    // 임시로 인덱스를 ID로 사용하여 그룹화
+    const groupedData: Record<string, DisabledStudentWithSupporters> = {};
 
-  return Object.values(groupedData);
-};
+    data.forEach((row, index) => {
+      // 각 장애학생의 키를 이름+학과 조합으로 만듦
+      const key = `${row.disabledStudent.name}-${row.disabledStudent.department}`;
 
-const columnHelper = createColumnHelper<DisabledStudent>();
+      if (!groupedData[key]) {
+        groupedData[key] = {
+          ...row.disabledStudent,
+          supporters: [],
+        };
+      }
 
-const columns: ColumnDef<DisabledStudent, any>[] = [
-  columnHelper.accessor("name", {
-    header: "이름",
-  }),
-  columnHelper.accessor("department", {
-    header: "학과",
-  }),
-  columnHelper.accessor("gender", {
-    header: "성별",
-  }),
-  columnHelper.accessor("disabilityType", {
-    header: "장애 유형",
-  }),
-  columnHelper.accessor("matchingStatus", {
-    header: "매칭",
-    cell: () => <span className="text-red-500">매칭 완료</span>,
-  }),
-];
+      groupedData[key].supporters.push(row.supporter);
+    });
 
-const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data, onTimeTableClick }) => {
+    return Object.values(groupedData);
+  }, []);
+
   const groupedData = groupByDisabledStudent(data);
   
-  const tableColumns = [...columns];
-  
-  if (onTimeTableClick) {
-    tableColumns.push(
-      columnHelper.display({
-        id: "actions",
-        header: "관리",
-        cell: ({ row }) => (
-          <button
-            className="px-2 py-1 text-xs bg-blue-500 text-white rounded hover:bg-blue-600"
-            onClick={() => onTimeTableClick(row.original)}
-          >
-            시간표
-          </button>
-        ),
-      })
-    );
-  }
+  const columnHelper = createColumnHelper<DisabledStudentWithSupporters>();
+
+  const columns: ColumnDef<DisabledStudentWithSupporters, any>[] = [
+    columnHelper.accessor("name", {
+      header: "이름",
+    }),
+    columnHelper.accessor("department", {
+      header: "학과",
+    }),
+    columnHelper.accessor("gender", {
+      header: "성별",
+    }),
+    columnHelper.accessor("disabilityType", {
+      header: "장애 유형",
+    }),
+    columnHelper.accessor("matchingStatus", {
+      header: "매칭",
+      cell: () => <span className="text-red-500">매칭 완료</span>,
+    }),
+    columnHelper.display({
+      id: "timeTable",
+      header: "시간표",
+      cell: ({ row }) => {
+        // 행 ID에서 인덱스를 추출
+        const rowIndex = parseInt(row.id.split('_')[1]);
+        // 해당 인덱스의 학생 정보 가져오기
+        const student = groupedData[rowIndex];
+        
+        return student ? <TimeTableButton student={student} /> : null;
+      },
+    }),
+  ];
   
   const table = useReactTable({
-    data: groupedData.map(item => item.disabledStudent),
-    columns: tableColumns,
+    data: groupedData,
+    columns: columns,
     getCoreRowModel: getCoreRowModel(),
   });
 
@@ -98,7 +101,7 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data, onTimeT
           </tr>
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row, index) => (
+          {table.getRowModel().rows.map((row) => (
             <React.Fragment key={row.id}>
               <tr>
                 {row.getVisibleCells().map((cell) => (
@@ -111,9 +114,9 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data, onTimeT
                 ))}
               </tr>
               <tr>
-                <td colSpan={tableColumns.length} className="p-0 border border-gray-200">
+                <td colSpan={columns.length} className="p-0 border border-gray-200">
                   <div className="p-2">
-                    <SupporterMatchedTable supporters={groupedData[index].supporters} />
+                    <SupporterMatchedTable supporters={row.original.supporters} />
                   </div>
                 </td>
               </tr>
