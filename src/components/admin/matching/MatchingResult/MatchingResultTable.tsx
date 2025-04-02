@@ -22,7 +22,7 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data }) => {
     // 임시로 인덱스를 ID로 사용하여 그룹화
     const groupedData: Record<string, DisabledStudentWithSupporters> = {};
 
-    data.forEach((row, index) => {
+    data.forEach((row) => {
       // 각 장애학생의 키를 이름+학과 조합으로 만듦
       const key = `${row.disabledStudent.name}-${row.disabledStudent.department}`;
 
