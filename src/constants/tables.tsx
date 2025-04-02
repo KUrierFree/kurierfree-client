@@ -1,8 +1,8 @@
 import React from "react";
 import { ColumnDef, TableMeta } from "@tanstack/react-table";
 import { DisabledStudent, Supporter } from "../types/user";
-import MatchingStatusBadge from "../components/table/MatchingStatusBadge";
-import TimeTableButton from "../components/table/TimeTableButton";
+import MatchingStatusBadge from "../components/admin/matching/MatchingStatusBadge";
+import TimeTableButton from "../components/admin/matching/TimeTableButton";
 import SupporterSelectionTable from "../components/table/SupporterSelectionTable";
 
 interface TableMetaWithTimeTable<T> extends TableMeta<T> {

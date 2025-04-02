@@ -1,14 +1,13 @@
 import React, { useState, useMemo, useCallback } from "react";
-import Header from "../../components/layout/Header";
-import Footer from "../../components/layout/Footer";
-import TabNavigation, { TabType } from "../../components/common/TabNavigation";
-import BaseTable from "../../components/table/BaseTable";
-import EmptyTable from "../../components/table/EmptyTable";
-import MatchingStatusBadge from "../../components/table/MatchingStatusBadge";
-import TimeTableModal from "../../components/table/TimeTableModal";
-import MatchingTable from "../../components/table/MatchingTable";
-import { DisabledStudent, Supporter } from "../../types/user";
-import { DISABLED_STUDENT_COLUMNS, SUPPORTERS_COLUMNS } from "../../constants/tables";
+import Header from "../../../components/layout/Header";
+import Footer from "../../../components/layout/Footer";
+import TabNavigation, { TabType } from "../../../components/admin/matching/MatchingTabNavigation";
+import BaseTable from "../../../components/table/BaseTable";
+import EmptyTable from "../../../components/table/EmptyTable";
+import TimeTableModal from "../../../components/admin/matching/TimeTableModal";
+import MatchingTable from "../../../components/table/MatchingTable";
+import { DisabledStudent, Supporter } from "../../../types/user";
+import { SUPPORTERS_COLUMNS } from "../../../constants/tables";
 
 const SupporterMatchingPage: React.FC = () => {
 

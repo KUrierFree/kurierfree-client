@@ -1,3 +1,4 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Landing from "../pages/Landing";
 import Login from "../pages/auth/Login";
@@ -5,9 +6,9 @@ import Signup from "../pages/auth/Signup";
 import SignupStep1 from "../pages/auth/SignupStep1";
 import SignupStep2 from "../pages/auth/SignupStep2";
 import AdminMain from "../pages/admin/AdminMain";
-import SupporterMatchingPage from "../pages/admin/SupporterMatchingPage";
-import AdminApplicantMain from "../pages/admin/AdminApplicantMain";
-import AdminApplicantEdit from "../pages/admin/AdminApplicantEdit";
+import SupporterMatchingPage from "../pages/admin/matching/SupporterMatchingPage";
+import AdminApplicantMain from "../pages/admin/applicant/AdminApplicantMain";
+import AdminApplicantEdit from "../pages/admin/applicant/AdminApplicantEdit";
 
 const AppRoutes = () => {
   return (
