@@ -10,67 +10,67 @@ import {
   flexRender,
   ColumnDef,
 } from "@tanstack/react-table";
-import { DisabledStudent } from '../../../../types/user';
+import { DisabledStudent, Supporter } from '../../../../types/user';
 import SupporterSelectingTable from './SupporterSelectingTable';
+import TimeTableButton from '../TimeTableButton';
 import Button from '../../../common/Button';
-import TimeTableButton from '../TimeTableButton.tsx';
 
-interface TableMeta {
+// 테이블 메타 타입 정의
+interface CustomTableMeta {
   onMatchingStart: (student: DisabledStudent) => void;
   onSupporterSelect: (student: DisabledStudent, supporterId: string) => void;
-  getSupporterCandidates: (studentName: string) => Array<{
-    id: string;
-    name: string;
-    department: string;
-    gender: string;
-    grade: string;
-  }>;
+  getSupporterCandidates: (studentName: string) => Supporter[];
 }
 
+// 테이블 컴포넌트 타입 정의
 interface DisabledStudentTableProps {
   data: DisabledStudent[];
   tableOptions: {
-    meta: TableMeta;
+    meta: CustomTableMeta;
   };
 }
 
+// 테이블 컬럼 정의
 const columns: ColumnDef<DisabledStudent>[] = [
   { accessorKey: "name", header: "이름" },
-  { accessorKey: "department", header: "학과" },
   { accessorKey: "gender", header: "성별" },
+  { accessorKey: "department", header: "학과" },
+  { accessorKey: "grade", header: "학년" },
   { accessorKey: "disabilityType", header: "장애유형" },
   {
     id: "matchingStatus",
-    header: "매칭상태",
+    header: "매칭 상태",
+    size: 100,
     cell: ({ row }) => (
       <span className={`px-2 py-1 rounded-full text-sm ${
         row.original.matchingStatus === "completed" ? "bg-green-100 text-green-800" :
         row.original.matchingStatus === "selecting" ? "bg-yellow-100 text-yellow-800" :
         "bg-gray-100 text-gray-800"
       }`}>
-        {row.original.matchingStatus === "completed" ? "매칭완료" :
-         row.original.matchingStatus === "selecting" ? "매칭중" :
-         "미매칭"}
+        {row.original.matchingStatus === "completed" ? "매칭 완료" :
+         row.original.matchingStatus === "selecting" ? "매칭 중" :
+         "매칭 전"}
       </span>
     ),
   },
   {
     id: "timeTable",
     header: "시간표",
+    size: 80,
     cell: ({ row }) => (
       <TimeTableButton student={row.original} />
     ),
-    size: 80,
   },
   { 
     id: "actions",
     header: "관리",
+    size: 120,
     cell: ({ row, table }) => (
       <div className="flex gap-2">
           {row.original.matchingStatus === "waiting" && (
           <Button
             variant="primary"
-            onClick={() => (table.options.meta as TableMeta).onMatchingStart(row.original)}
+            onClick={() => (table.options.meta as CustomTableMeta).onMatchingStart(row.original)}
           >
             매칭시작
           </Button>
@@ -85,7 +85,7 @@ const DisabledStudentTable: React.FC<DisabledStudentTableProps> = ({ data, table
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    meta: tableOptions.meta,
+    meta: tableOptions.meta as any,
   });
 
   return (
@@ -141,8 +141,8 @@ const DisabledStudentTable: React.FC<DisabledStudentTableProps> = ({ data, table
                   <tr>
                     <td colSpan={columns.length} className="p-3 border-x border-gray-300 border-b">
                       <SupporterSelectingTable
-                        supporters={(tableOptions.meta as TableMeta).getSupporterCandidates(row.original.name)}
-                        onSelect={(supporterId) => (tableOptions.meta as TableMeta).onSupporterSelect(row.original, supporterId)}
+                        supporters={(tableOptions.meta as CustomTableMeta).getSupporterCandidates(row.original.name)}
+                        onSelect={(supporterId) => (tableOptions.meta as CustomTableMeta).onSupporterSelect(row.original, supporterId)}
                       />
                     </td>
                   </tr>

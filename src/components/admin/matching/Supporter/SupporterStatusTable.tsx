@@ -11,6 +11,7 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 import { Supporter } from '../../../../types/user';
+import TimeTableButton from '../TimeTableButton';
 
 interface SupporterStatusTableProps {
   data?: Supporter[];
@@ -18,8 +19,8 @@ interface SupporterStatusTableProps {
 
 const columns: ColumnDef<Supporter>[] = [
   { accessorKey: "name", header: "이름" },
-  { accessorKey: "department", header: "학과" },
   { accessorKey: "gender", header: "성별" },
+  { accessorKey: "department", header: "학과" },
   { accessorKey: "grade", header: "학년" },
   {
     id: "matchingStatus",
@@ -36,6 +37,14 @@ const columns: ColumnDef<Supporter>[] = [
       </span>
     ),
   },
+  {
+    id: "timeTable",
+    header: "시간표",
+    size: 80,
+    cell: ({ row }) => (
+      <TimeTableButton student={row.original} />
+    ),
+  }
 ];
 
 const SupporterStatusTable: React.FC<SupporterStatusTableProps> = ( {data} ) => {
