@@ -65,7 +65,7 @@ const SupporterMatchingPage: React.FC = () => {
     const candidateInfo = supporterCandidates.find(
       candidate => candidate.disabledStudentName === studentName
     );
-    return candidateInfo ? candidateInfo.supporters : [];
+    return candidateInfo ? (candidateInfo.supporters as unknown as Supporter[]) : [];
   };
 
   const renderContent = () => {

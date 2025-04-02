@@ -1,18 +1,12 @@
 import React from "react";
-import DisabledStudentTable from "../../../../components/admin/matching/table/DisabledStudentTable";
-import { DisabledStudent } from "../../../../types/user";
+import DisabledStudentTable from "../../../../components/admin/matching/DisabledStudent/DisabledStudentTable";
+import { DisabledStudent, Supporter } from "../../../../types/user";
 
 interface DisabledStudentTabProps {
   disabledStudents: DisabledStudent[];
   onMatchingStart: (student: DisabledStudent) => void;
   onSupporterSelect: (student: DisabledStudent, supporterId: string) => void;
-  getSupporterCandidates: (studentName: string) => Array<{
-    id: string;
-    name: string;
-    department: string;
-    gender: string;
-    grade: string;
-  }>;
+  getSupporterCandidates: (studentName: string) => Supporter[];
 }
 
 const DisabledStudentTab: React.FC<DisabledStudentTabProps> = ({
