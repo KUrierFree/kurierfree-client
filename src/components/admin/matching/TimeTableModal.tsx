@@ -1,10 +1,10 @@
 import React from 'react';
-import { DisabledStudent } from '../../../types/user';
+import { DisabledStudent, Supporter } from '../../../types/user';
 
 interface TimeTableModalProps {
   isOpen: boolean;
   onClose: () => void;
-  student: DisabledStudent;
+  student: DisabledStudent | Supporter;
 }
 
 const TimeTableModal: React.FC<TimeTableModalProps> = ({ isOpen, onClose, student }) => {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { DisabledStudent } from '../../../types/user';
+import { DisabledStudent, Supporter } from '../../../types/user';
 import TimeTableModal from './TimeTableModal';
 
 interface TimeTableButtonProps {
-  student: DisabledStudent;
+  student: DisabledStudent | Supporter;
 }
 
 const TimeTableButton = ({ student }: TimeTableButtonProps) => {

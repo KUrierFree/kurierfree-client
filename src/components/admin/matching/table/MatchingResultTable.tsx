@@ -56,10 +56,6 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data }) => {
     columnHelper.accessor("disabilityType", {
       header: "장애 유형",
     }),
-    columnHelper.accessor("matchingStatus", {
-      header: "매칭",
-      cell: () => <span className="text-red-500">매칭 완료</span>,
-    }),
     columnHelper.display({
       id: "timeTable",
       header: "시간표",
@@ -75,15 +71,15 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data }) => {
   });
 
   return (
-    <div className="bg-white rounded-md shadow-sm">
-      <table className="min-w-full">
-        <thead className="bg-gray-50">
-          <tr>
-            {table.getHeaderGroups().map((headerGroup) => (
-              headerGroup.headers.map((header) => (
+    <div className="bg-white">
+      <table className="w-full border-collapse">
+        <thead>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id} className="border-y border-gray-300">
+              {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="px-3 py-2 text-xs text-gray-500 border border-gray-200"
+                  className="p-3 border-x border-gray-300 text-left bg-gray-50"
                   style={{ 
                     width: header.column.getSize() !== 150 ? header.column.getSize() : undefined 
                   }}
@@ -93,35 +89,46 @@ const MatchingResultTable: React.FC<MatchingResultTableProps> = ({ data }) => {
                     header.getContext()
                   )}
                 </th>
-              ))
-            ))}
-          </tr>
+              ))}
+            </tr>
+          ))}
         </thead>
         <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <React.Fragment key={row.id}>
-              <tr>
-                {row.getVisibleCells().map((cell) => (
-                  <td
-                    key={cell.id}
-                    className="px-3 py-2 text-sm text-gray-600 border border-gray-200"
-                    style={{ 
-                      width: cell.column.getSize() !== 150 ? cell.column.getSize() : undefined 
-                    }}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          {groupedData.length === 0 ? (
+            <tr>
+              <td
+                colSpan={columns.length}
+                className="p-3 text-center text-gray-500 border-b border-gray-300"
+              >
+                매칭 결과가 없습니다.
+              </td>
+            </tr>
+          ) : (
+            table.getRowModel().rows.map((row) => (
+              <React.Fragment key={row.id}>
+                <tr>
+                  {row.getVisibleCells().map((cell) => (
+                    <td
+                      key={cell.id}
+                      className="p-3 border-x border-gray-300 border-b"
+                      style={{ 
+                        width: cell.column.getSize() !== 150 ? cell.column.getSize() : undefined 
+                      }}
+                    >
+                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  <td colSpan={columns.length} className="p-0 border-x border-gray-300 border-b">
+                    <div className="p-2">
+                      <SupporterMatchedTable supporters={row.original.supporters} />
+                    </div>
                   </td>
-                ))}
-              </tr>
-              <tr>
-                <td colSpan={columns.length} className="p-0 border border-gray-200">
-                  <div className="p-2">
-                    <SupporterMatchedTable supporters={row.original.supporters} />
-                  </div>
-                </td>
-              </tr>
-            </React.Fragment>
-          ))}
+                </tr>
+              </React.Fragment>
+            ))
+          )}
         </tbody>
       </table>
     </div>
