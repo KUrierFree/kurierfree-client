@@ -1,5 +1,5 @@
 import React from "react";
-import { MatchingStatus } from "../../types/user";
+import { MatchingStatus } from "../../../types/user";
 
 interface MatchingStatusBadgeProps {
   status: MatchingStatus;

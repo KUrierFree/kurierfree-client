@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../components/common/Button";
+import Button from "../../common/Button";
 
 interface ConfirmModalProps {
   isOpen: boolean;
