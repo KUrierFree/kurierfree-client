@@ -7,13 +7,15 @@ interface DisabledStudentTabProps {
   onMatchingStart: (student: DisabledStudent) => void;
   onSupporterSelect: (student: DisabledStudent, supporterId: string) => void;
   getSupporterCandidates: (studentName: string) => Supporter[];
+  onMatchingEdit?: (student: DisabledStudent) => void;
 }
 
 const DisabledStudentTab: React.FC<DisabledStudentTabProps> = ({
   disabledStudents,
   onMatchingStart,
   onSupporterSelect,
-  getSupporterCandidates
+  getSupporterCandidates,
+  onMatchingEdit
 }) => {
   return (
     <DisabledStudentTable
@@ -23,6 +25,7 @@ const DisabledStudentTab: React.FC<DisabledStudentTabProps> = ({
           onMatchingStart,
           onSupporterSelect,
           getSupporterCandidates,
+          onMatchingEdit,
         },
       }}
     />

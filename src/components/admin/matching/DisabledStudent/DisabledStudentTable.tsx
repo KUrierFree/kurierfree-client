@@ -20,6 +20,7 @@ interface CustomTableMeta {
   onMatchingStart: (student: DisabledStudent) => void;
   onSupporterSelect: (student: DisabledStudent, supporterId: string) => void;
   getSupporterCandidates: (studentName: string) => Supporter[];
+  onMatchingEdit?: (student: DisabledStudent) => void;
 }
 
 // 테이블 컴포넌트 타입 정의
@@ -73,6 +74,14 @@ const columns: ColumnDef<DisabledStudent>[] = [
             onClick={() => (table.options.meta as CustomTableMeta).onMatchingStart(row.original)}
           >
             매칭시작
+          </Button>
+        )}
+        {row.original.matchingStatus === "completed" && (
+          <Button
+            variant="secondary"
+            onClick={() => (table.options.meta as CustomTableMeta).onMatchingEdit?.(row.original)}
+          >
+            매칭수정
           </Button>
         )}
       </div>

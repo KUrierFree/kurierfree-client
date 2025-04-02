@@ -68,6 +68,39 @@ const SupporterMatchingPage: React.FC = () => {
     return candidateInfo ? (candidateInfo.supporters as unknown as Supporter[]) : [];
   };
 
+  // 매칭 수정 처리
+  const handleMatchingEdit = (student: DisabledStudent) => {
+    // 해당 학생을 다시 selecting 상태로 변경
+    const updatedStudents = disabledStudents.map(item => 
+      item.name === student.name && item.department === student.department
+        ? { ...item, matchingStatus: "selecting" as const }
+        : item
+    );
+    setDisabledStudents(updatedStudents);
+
+    // 매칭 결과에서 해당 학생 관련 결과 제거
+    const updatedResults = matchingResults.filter(result => 
+      !(result.disabledStudent.name === student.name && 
+        result.disabledStudent.department === student.department)
+    );
+    setMatchingResults(updatedResults);
+
+    // 해당 학생과 매칭된 서포터 상태 다시 waiting으로 변경
+    const matchedResult = matchingResults.find(result => 
+      result.disabledStudent.name === student.name && 
+      result.disabledStudent.department === student.department
+    );
+    
+    if (matchedResult) {
+      const updatedSupporters = supporters.map(item => 
+        item.id === matchedResult.supporter.id
+          ? { ...item, matchingStatus: "waiting" as const }
+          : item
+      );
+      setSupporters(updatedSupporters);
+    }
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case "disabled_student":
@@ -77,6 +110,7 @@ const SupporterMatchingPage: React.FC = () => {
             onMatchingStart={handleMatchingStart}
             onSupporterSelect={handleSupporterSelect}
             getSupporterCandidates={getSupporterCandidatesForStudent}
+            onMatchingEdit={handleMatchingEdit}
           />
         );
       case "supporter":
