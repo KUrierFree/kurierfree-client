@@ -14,7 +14,8 @@ const SupporterMatchingPage: React.FC = () => {
   const [disabledStudents, setDisabledStudents] = useState(matchingState.disabledStudents);
   const [supporters, setSupporters] = useState(matchingState.supporters);
   const [matchingResults, setMatchingResults] = useState(matchingState.matchingResults);
-  const [supporterCandidates, setSupporterCandidates] = useState(matchingState.supporterCandidates);
+  // supporterCandidates를 불변 상수로 정의 (API 연동 전까지는 변경되지 않음)
+  const supporterCandidates = matchingState.supporterCandidates;
 
   const handleTabChange = (tab: MatchingTabType) => {
     setActiveTab(tab);
