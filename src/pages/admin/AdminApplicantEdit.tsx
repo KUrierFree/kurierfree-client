@@ -89,7 +89,7 @@ const AdminApplicantEdit: React.FC = () => {
                 }, 0);
               }}
             >
-              수정
+              저장
             </Button>
           </div>
         </div>
