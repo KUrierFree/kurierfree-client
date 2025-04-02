@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DisabledStudent, Supporter } from '../../../types/user';
 import TimeTableModal from './TimeTableModal';
 

@@ -1,4 +1,4 @@
-import { DisabledStudent, Supporter, MatchingStatus } from "../../types/user";
+import { DisabledStudent, Supporter } from "../../types/user";
 
 // 장애학생 더미 데이터 - 모두 waiting 상태로 설정
 export const disabledStudents: DisabledStudent[] = [
