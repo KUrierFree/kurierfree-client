@@ -4,7 +4,7 @@ import Footer from "../../../components/layout/Footer";
 import TabNavigation, { MatchingTabType } from "../../../components/admin/matching/MatchingTabNavigation";
 import TimeTableModal from "../../../components/admin/matching/TimeTableModal";
 import DisabledStudentTab from "./tabs/DisabledStudentTab";
-import SupporterStatusTable from "../../../components/admin/matching/table/SupporterStatusTable";
+import SupporterTab from "./tabs/SupporterTab";
 
 const SupporterMatchingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<MatchingTabType>("disabled_student");
@@ -19,7 +19,7 @@ const SupporterMatchingPage: React.FC = () => {
       case "disabled_student":
         return <DisabledStudentTab onTimeTableClick={() => setIsTimeTableModalOpen(true)} />;
       case "supporter":
-        return <SupporterStatusTable />;
+        return <SupporterTab />;
       case "matching":
         return <div>매칭 결과 테이블 (구현 예정)</div>;
       default:
