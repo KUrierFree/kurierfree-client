@@ -11,8 +11,9 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 import { DisabledStudent } from '../../../../types/user';
-import SupporterCandidateTable from './SupporterCandidateTable';
+import SupporterSelectingTable from './SupporterSelectingTable';
 import Button from '../../../common/Button';
+import TimeTableButton from '../TimeTableButton';
 
 interface TableMeta {
   onTimeTableClick: (student: DisabledStudent) => void;
@@ -48,17 +49,16 @@ const columns: ColumnDef<DisabledStudent>[] = [
     ),
   },
   {
+    id: "timeTable",
+    header: "시간표",
+    cell: () => <TimeTableButton onClick={() => {}} />,
+  },
+  { 
     id: "actions",
     header: "관리",
     cell: ({ row, table }) => (
       <div className="flex gap-2">
-        <Button
-          variant="secondary"
-          onClick={() => (table.options.meta as TableMeta).onTimeTableClick(row.original)}
-        >
-          시간표
-        </Button>
-        {row.original.matchingStatus === "waiting" && (
+          {row.original.matchingStatus === "waiting" && (
           <Button
             variant="primary"
             onClick={() => (table.options.meta as TableMeta).onMatchingStart(row.original)}
@@ -122,7 +122,7 @@ const DisabledStudentTable: React.FC<DisabledStudentTableProps> = ({ data, table
                 {row.original.matchingStatus === "selecting" && (
                   <tr>
                     <td colSpan={columns.length} className="p-3 border-x border-gray-300 border-b">
-                      <SupporterCandidateTable
+                      <SupporterSelectingTable
                         supporters={[
                           { name: "홍길동", department: "컴퓨터공학과", gender: "남성", grade: "3학년 1학기" },
                           { name: "김철수", department: "경영학과", gender: "남성", grade: "2학년 2학기" },
