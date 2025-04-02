@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/layout/Header";
 import Footer from "../../components/layout/Footer";
+import Button from "../../components/common/Button";
 import StudentApplicantListTable from "../../components/admin/StudentApplicantListTable";
 
 interface Student {
@@ -58,24 +60,42 @@ const dummyApplicants: Student[] = [
 ];
 
 const AdminApplicantEdit: React.FC = () => {
-  const [_selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+  const navigate = useNavigate();
+  const [_selectedStudent, _setSelectedStudent] = useState<Student | null>(
+    null
+  );
 
   // 상세정보 보기 클릭 시 실행할 핸들러
   const handleDetailClick = (student: Student) => {
-    alert(`상세정보 보기: ${student.name}`);
-    setSelectedStudent(student);
+    console.log(student);
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Header />
-      <div className="h-[var(--header-height)]"></div>
-      <StudentApplicantListTable
-        students={dummyApplicants}
-        onDetailClick={handleDetailClick}
-      />
+      <div className="min-h-screen bg-[#f5f7f9] flex flex-col items-center justify-center">
+        <div className="w-[80%] inline-flex flex-col justify-start px-[151px] py-[95px] gap-[100px]">
+          <StudentApplicantListTable
+            students={dummyApplicants}
+            onDetailClick={handleDetailClick}
+          />
+          {/* 버튼을 가운데 정렬 */}
+          <div className="w-full flex justify-center px-[30%]">
+            <Button
+              variant="primary"
+              onClick={() => {
+                setTimeout(() => {
+                  navigate("/admin/applicant/list");
+                }, 0);
+              }}
+            >
+              수정
+            </Button>
+          </div>
+        </div>
+      </div>
       <Footer />
-    </div>
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import AdminLandingPage from "../pages/admin/AdminLandingPage";
 import SupporterMatchingPage from "../pages/admin/SupporterMatchingPage";
 import AdminApplicantMain from "../pages/admin/AdminApplicantMain";
 import AdminApplicantEdit from "../pages/admin/AdminApplicantEdit";
+import AdminMain from "../pages/admin/AdminMain";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
 
+      <Route path="/admin" element={<AdminMain />} />
       <Route path="/admin/applicant" element={<AdminApplicantMain />} />
       <Route
         path="/admin/applicant/list"
