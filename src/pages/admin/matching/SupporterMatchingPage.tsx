@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import Header from "../../../components/layout/Header";
 import Footer from "../../../components/layout/Footer";
 import TabNavigation, { MatchingTabType } from "../../../components/admin/matching/MatchingTabNavigation";
-import TimeTableModal from "../../../components/admin/matching/TimeTableModal";
 import DisabledStudentTab from "./tabs/DisabledStudentTab";
 import SupporterTab from "./tabs/SupporterTab";
 
 const SupporterMatchingPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<MatchingTabType>("disabled_student");
-  const [isTimeTableModalOpen, setIsTimeTableModalOpen] = useState(false);
 
   const handleTabChange = (tab: MatchingTabType) => {
     setActiveTab(tab);
@@ -17,7 +15,7 @@ const SupporterMatchingPage: React.FC = () => {
   const renderContent = () => {
     switch (activeTab) {
       case "disabled_student":
-        return <DisabledStudentTab onTimeTableClick={() => setIsTimeTableModalOpen(true)} />;
+        return <DisabledStudentTab />;
       case "supporter":
         return <SupporterTab />;
       case "matching":
@@ -40,12 +38,6 @@ const SupporterMatchingPage: React.FC = () => {
         </div>
       </main>
       <Footer />
-      {isTimeTableModalOpen && (
-        <TimeTableModal
-          isOpen={isTimeTableModalOpen}
-          onClose={() => setIsTimeTableModalOpen(false)}
-        />
-      )}
     </div>
   );
 };

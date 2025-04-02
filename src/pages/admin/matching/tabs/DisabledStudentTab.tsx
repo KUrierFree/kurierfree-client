@@ -1,25 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import DisabledStudentTable from "../../../../components/admin/matching/table/DisabledStudentTable";
 import { useDisabledStudentMatching } from "../../../../hooks/matching/useDisabledStudentMatching";
+import TimeTableModal from "../../../../components/admin/matching/TimeTableModal";
 
-interface DisabledStudentTabProps {
-  onTimeTableClick: () => void;
-}
-
-const DisabledStudentTab: React.FC<DisabledStudentTabProps> = ({ onTimeTableClick }) => {
+const DisabledStudentTab: React.FC = () => {
+  const [isTimeTableModalOpen, setIsTimeTableModalOpen] = useState(false);
   const { disabledStudents, handleMatchingStart, handleSupporterSelect } = useDisabledStudentMatching();
 
   return (
-    <DisabledStudentTable
-      data={disabledStudents}
-      tableOptions={{
-        meta: {
-          onTimeTableClick: onTimeTableClick,
-          onMatchingStart: handleMatchingStart,
-          onSupporterSelect: handleSupporterSelect,
-        },
-      }}
-    />
+    <>
+      <DisabledStudentTable
+        data={disabledStudents}
+        tableOptions={{
+          meta: {
+            onTimeTableClick: () => setIsTimeTableModalOpen(true),
+            onMatchingStart: handleMatchingStart,
+            onSupporterSelect: handleSupporterSelect,
+          },
+        }}
+      />
+      {isTimeTableModalOpen && (
+        <TimeTableModal
+          isOpen={isTimeTableModalOpen}
+          onClose={() => setIsTimeTableModalOpen(false)}
+        />
+      )}
+    </>
   );
 };
 
