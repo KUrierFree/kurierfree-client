@@ -6,6 +6,7 @@ import BaseTable from "../../components/table/BaseTable";
 import EmptyTable from "../../components/table/EmptyTable";
 import MatchingStatusBadge from "../../components/table/MatchingStatusBadge";
 import TimeTableModal from "../../components/table/TimeTableModal";
+import MatchingTable from "../../components/table/MatchingTable";
 import { DisabledStudent, Supporter } from "../../types/user";
 import { DISABLED_STUDENT_COLUMNS, SUPPORTERS_COLUMNS } from "../../constants/tables";
 
@@ -235,28 +236,21 @@ const SupporterMatchingPage: React.FC = () => {
     switch (activeTab) {
       case "disabled_student":
         return (
-          <BaseTable
+          <MatchingTable
             data={disabledStudents}
-            columns={DISABLED_STUDENT_COLUMNS}
             tableOptions={tableOptions}
           />
         );
       case "supporters":
         return (
-          <div>
-            <BaseTable
-              data={supportersData}
-              columns={SUPPORTERS_COLUMNS}
-              tableOptions={tableOptions}
-            />
-          </div>
+          <BaseTable
+            data={supportersData}
+            columns={SUPPORTERS_COLUMNS}
+            tableOptions={tableOptions}
+          />
         );
       case "matching":
-        return (
-          <div className="p-4">
-            <p>매칭 결과 화면입니다.</p>
-          </div>
-        );
+        return <EmptyTable message="매칭 결과가 없습니다." />;
       default:
         return null;
     }

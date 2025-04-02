@@ -4,11 +4,10 @@ import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
 import SignupStep1 from "../pages/auth/SignupStep1";
 import SignupStep2 from "../pages/auth/SignupStep2";
-import AdminLandingPage from "../pages/admin/AdminLandingPage";
+import AdminMain from "../pages/admin/AdminMain";
 import SupporterMatchingPage from "../pages/admin/SupporterMatchingPage";
 import AdminApplicantMain from "../pages/admin/AdminApplicantMain";
 import AdminApplicantEdit from "../pages/admin/AdminApplicantEdit";
-import AdminMain from "../pages/admin/AdminMain";
 
 const AppRoutes = () => {
   return (
@@ -16,12 +15,11 @@ const AppRoutes = () => {
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
 
+      {/* 관리자 페이지 */}
       <Route path="/admin" element={<AdminMain />} />
       <Route path="/admin/applicant" element={<AdminApplicantMain />} />
-      <Route
-        path="/admin/applicant/list"
-        element={<AdminApplicantEdit />}
-      ></Route>
+      <Route path="/admin/applicant/list" element={<AdminApplicantEdit />} />
+      <Route path="/admin/matching" element={<SupporterMatchingPage />} />
 
       {/* 회원가입 중첩 라우팅 */}
       <Route path="/signup" element={<Signup />}>
@@ -29,10 +27,6 @@ const AppRoutes = () => {
         <Route path="step1" element={<SignupStep1 />} />
         <Route path="step2" element={<SignupStep2 />} />
       </Route>
-      
-      {/* 관리자 페이지 */}
-      <Route path="/admin" element={<AdminLandingPage />} />
-      <Route path="/admin/supporter-matching" element={<SupporterMatchingPage />} />
     </Routes>
   );
 };

@@ -14,6 +14,7 @@ export interface BaseTableProps<T extends object> {
   columns: ColumnDef<T, any>[];
   className?: string;
   tableOptions?: Partial<TableOptions<T>>;
+  renderExpandedRow?: (row: T) => React.ReactNode;
 }
 
 /**
@@ -25,6 +26,7 @@ function BaseTable<T extends object>({
   columns,
   className = "",
   tableOptions = {},
+  renderExpandedRow,
 }: BaseTableProps<T>) {
   const table = useReactTable({
     data,
@@ -71,17 +73,10 @@ function BaseTable<T extends object>({
                   </td>
                 ))}
               </tr>
-              {(row.original as any).matchingStatus === "selecting" && (
+              {renderExpandedRow && renderExpandedRow(row.original) && (
                 <tr>
                   <td colSpan={columns.length} className="px-6 py-4">
-                    <SupporterSelectionTable
-                      supporters={[
-                        { name: "홍길동", department: "컴퓨터공학과", gender: "남성", grade: "3학년" },
-                        { name: "김철수", department: "경영학과", gender: "남성", grade: "2학년" },
-                        { name: "이영희", department: "심리학과", gender: "여성", grade: "4학년" },
-                      ]}
-                      onSelect={(supporterId) => (tableOptions?.meta as any).onSupporterSelect(row.original, supporterId)}
-                    />
+                    {renderExpandedRow(row.original)}
                   </td>
                 </tr>
               )}
