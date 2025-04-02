@@ -18,6 +18,13 @@ import TimeTableButton from '../TimeTableButton.tsx';
 interface TableMeta {
   onMatchingStart: (student: DisabledStudent) => void;
   onSupporterSelect: (student: DisabledStudent, supporterId: string) => void;
+  getSupporterCandidates: (studentName: string) => Array<{
+    id: string;
+    name: string;
+    department: string;
+    gender: string;
+    grade: string;
+  }>;
 }
 
 interface DisabledStudentTableProps {
@@ -124,12 +131,8 @@ const DisabledStudentTable: React.FC<DisabledStudentTableProps> = ({ data, table
                   <tr>
                     <td colSpan={columns.length} className="p-3 border-x border-gray-300 border-b">
                       <SupporterSelectingTable
-                        supporters={[
-                          { name: "홍길동", department: "컴퓨터공학과", gender: "남성", grade: "3학년 1학기" },
-                          { name: "김철수", department: "경영학과", gender: "남성", grade: "2학년 2학기" },
-                          { name: "이영희", department: "심리학과", gender: "여성", grade: "4학년 1학기" },
-                        ]}
-                        onSelect={(supporterId) => (table.options.meta as TableMeta).onSupporterSelect(row.original, supporterId)}
+                        supporters={(tableOptions.meta as TableMeta).getSupporterCandidates(row.original.name)}
+                        onSelect={(supporterId) => (tableOptions.meta as TableMeta).onSupporterSelect(row.original, supporterId)}
                       />
                     </td>
                   </tr>

@@ -1,17 +1,34 @@
 import React from "react";
 import DisabledStudentTable from "../../../../components/admin/matching/table/DisabledStudentTable";
-import { useDisabledStudentMatching } from "../../../../hooks/matching/useDisabledStudentMatching";
+import { DisabledStudent } from "../../../../types/user";
 
-const DisabledStudentTab: React.FC = () => {
-  const { disabledStudents, handleMatchingStart, handleSupporterSelect } = useDisabledStudentMatching();
+interface DisabledStudentTabProps {
+  disabledStudents: DisabledStudent[];
+  onMatchingStart: (student: DisabledStudent) => void;
+  onSupporterSelect: (student: DisabledStudent, supporterId: string) => void;
+  getSupporterCandidates: (studentName: string) => Array<{
+    id: string;
+    name: string;
+    department: string;
+    gender: string;
+    grade: string;
+  }>;
+}
 
+const DisabledStudentTab: React.FC<DisabledStudentTabProps> = ({
+  disabledStudents,
+  onMatchingStart,
+  onSupporterSelect,
+  getSupporterCandidates
+}) => {
   return (
     <DisabledStudentTable
       data={disabledStudents}
       tableOptions={{
         meta: {
-          onMatchingStart: handleMatchingStart,
-          onSupporterSelect: handleSupporterSelect,
+          onMatchingStart,
+          onSupporterSelect,
+          getSupporterCandidates,
         },
       }}
     />
