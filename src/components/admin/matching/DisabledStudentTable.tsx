@@ -11,10 +11,11 @@ interface Props {
   expandedRowIds: string[];
   toggleRow: (id: string) => void;
   onSelectSupporter: (studentId: number, supporterId: number) => void;
-  onMatchingStart: (student: DisabledStudent) => void;
-  onMatchingEdit: (student: DisabledStudent, supporter: Supporter) => void;
+  onMatchingStart: (student: DisabledStudent, supporters: Supporter[]) => void;
+  onMatchingEdit: (student: DisabledStudent) => void;
+  onMatchingCancel: (student: DisabledStudent) => void;
   onConfirm: (studentId: number) => void;
-  onMatchingCancel: (student: DisabledStudent, supporter: Supporter) => void;
+  supporters: Supporter[];
 }
 
 const columns: ColumnDef<DisabledStudent>[] = [
@@ -55,7 +56,7 @@ const columns: ColumnDef<DisabledStudent>[] = [
           <Button
             variant="primary"
             data-action="matching"
-            onClick={() => (table.options.meta as CustomTableMeta).onMatchingStart(row.original)}
+            onClick={() => (table.options.meta as CustomTableMeta).onMatchingStart(row.original, (table.options.meta as CustomTableMeta).supporters)}
           >
             매칭시작
           </Button>
@@ -67,7 +68,7 @@ const columns: ColumnDef<DisabledStudent>[] = [
             onClick={() => {
               const supporter = row.original.matchingCandidates?.[0];
               if (supporter) {
-                (table.options.meta as CustomTableMeta).onMatchingEdit?.(row.original, supporter);
+                (table.options.meta as CustomTableMeta).onMatchingEdit?.(row.original);
               }
             }}
           >
@@ -79,10 +80,7 @@ const columns: ColumnDef<DisabledStudent>[] = [
             variant="danger"
             data-action="matching-cancel"
             onClick={() => {
-              const supporter = row.original.matchingCandidates?.[0];
-              if (supporter) {
-                (table.options.meta as CustomTableMeta).onMatchingCancel?.(row.original, supporter);
-              }
+              (table.options.meta as CustomTableMeta).onMatchingCancel?.(row.original);
             }}
           >
             매칭취소
@@ -99,8 +97,9 @@ const DisabledStudentTable = ({
   onSelectSupporter,
   onMatchingStart,
   onMatchingEdit,
-  onConfirm,
   onMatchingCancel,
+  onConfirm,
+  supporters,
 }: Props) => {
   return (
     <BaseTable
@@ -110,6 +109,7 @@ const DisabledStudentTable = ({
         onMatchingStart,
         onMatchingEdit,
         onMatchingCancel,
+        supporters,
       }}
       expandable={{
         expandedRowIds,
