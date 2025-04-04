@@ -25,7 +25,7 @@ const columns: ColumnDef<DisabledStudent>[] = [
   {
     id: "matchingStatus",
     header: "매칭 상태",
-    size: 100,
+    size: 120,
     cell: ({ row }) => (
       <span className={`px-2 py-1 rounded-full text-sm ${
         row.original.matchingStatus === "completed" ? "bg-green-100 text-green-800" :
