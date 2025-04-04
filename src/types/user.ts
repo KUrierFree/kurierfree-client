@@ -51,9 +51,11 @@ export interface Supporter {
 
 export interface MatchingResult {
   disabledStudent: DisabledStudent;
-  supporter: Supporter;
-  dayOfWeek: "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY";
-  startTime: string;
-  endTime: string;
-  details?: string;
+  supporters: {
+    supporter: Supporter;
+    dayOfWeek: string;
+    startTime: string;
+    endTime: string;
+    details: string;
+  }[];
 }

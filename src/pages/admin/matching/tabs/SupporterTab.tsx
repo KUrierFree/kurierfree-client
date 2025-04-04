@@ -1,6 +1,6 @@
 import React from "react";
 import { Supporter } from "../../../../types/user";
-import SupportersTable from "../../../../components/admin/matching/supporters/SupportersTable";
+import SupportersTable from "../../../../components/admin/matching/SupportersTable";
 
 // 더미 데이터
 const dummySupporters: Supporter[] = [
@@ -9,7 +9,7 @@ const dummySupporters: Supporter[] = [
     name: "서포터1",
     gender: "남성",
     department: "컴퓨터공학과",
-    grade: "2학년",
+    grade: "2학년 1학기",
     matchingStatus: "waiting",
     supportType: "수업도우미"
   },
@@ -18,7 +18,7 @@ const dummySupporters: Supporter[] = [
     name: "서포터2",
     gender: "여성",
     department: "전자공학과",
-    grade: "3학년",
+    grade: "3학년 2학기",
     matchingStatus: "waiting",
     supportType: "수업도우미"
   }

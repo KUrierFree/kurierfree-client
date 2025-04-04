@@ -11,6 +11,7 @@ interface BaseTableProps<T> {
   data: T[];
   columns: ColumnDef<T>[];
   className?: string;
+  meta?: Record<string, any>;
   expandable?: {
     expandedRowIds?: string[];
     renderExpandedRow?: (row: T) => React.ReactNode;
@@ -21,6 +22,7 @@ const BaseTable = <T,>({
   data, 
   columns, 
   className = "", 
+  meta,
   expandable
 }: BaseTableProps<T>) => {
   const { expandedRowIds = [], renderExpandedRow } = expandable || {};
@@ -29,6 +31,7 @@ const BaseTable = <T,>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    meta,
   });
 
   return (

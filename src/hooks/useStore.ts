@@ -20,7 +20,7 @@ const initialFormData: SignupFormData = {
   department: '',
   grade: '',
   gender: '남성',
-  userType: 'disabled',
+  userType: undefined,
   disabilityType: '',
   otherDisabilityDetail: '',
 };
