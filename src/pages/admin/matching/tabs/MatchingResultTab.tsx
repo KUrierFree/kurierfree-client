@@ -25,7 +25,7 @@ const dummyMatchingResults: MatchingResult[] = [
           grade: "2학년 1학기",
           matchingStatus: "completed"
         },
-        dayOfWeek: "MONDAY",
+        dayOfWeek: "월",
         startTime: "09:00",
         endTime: "10:00",
         details: "컴퓨터공학과 수업 지원"
@@ -39,7 +39,7 @@ const dummyMatchingResults: MatchingResult[] = [
           grade: "3학년 1학기",
           matchingStatus: "completed"
         },
-        dayOfWeek: "WEDNESDAY",
+        dayOfWeek: "수",
         startTime: "13:00",
         endTime: "14:00",
         details: "전자공학과 수업 지원"
@@ -53,7 +53,7 @@ const dummyMatchingResults: MatchingResult[] = [
           grade: "4학년 1학기",
           matchingStatus: "completed"
         },
-        dayOfWeek: "FRIDAY",
+        dayOfWeek: "금",
         startTime: "15:00",
         endTime: "16:00",
         details: "기계공학과 수업 지원"
@@ -81,7 +81,7 @@ const dummyMatchingResults: MatchingResult[] = [
           grade: "2학년 1학기",
           matchingStatus: "completed"
         },
-        dayOfWeek: "TUESDAY",
+        dayOfWeek: "화",
         startTime: "10:00",
         endTime: "11:00",
         details: "화학공학과 수업 지원"
@@ -95,7 +95,7 @@ const dummyMatchingResults: MatchingResult[] = [
           grade: "3학년 1학기",
           matchingStatus: "completed"
         },
-        dayOfWeek: "THURSDAY",
+        dayOfWeek: "목",
         startTime: "14:00",
         endTime: "15:00",
         details: "생명공학과 수업 지원"
@@ -109,7 +109,7 @@ const dummyMatchingResults: MatchingResult[] = [
           grade: "4학년 1학기",
           matchingStatus: "completed"
         },
-        dayOfWeek: "FRIDAY",
+        dayOfWeek: "금",
         startTime: "11:00",
         endTime: "12:00",
         details: "건축공학과 수업 지원"

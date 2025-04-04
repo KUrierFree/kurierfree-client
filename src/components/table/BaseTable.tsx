@@ -8,7 +8,7 @@ import {
 import EmptyTableMessage from './EmptyTableMessage';
 import { DisabledStudent } from "../../types/user";
 
-interface BaseTableProps<T extends { id: number }> {
+interface BaseTableProps<T> {
   data: T[];
   columns: ColumnDef<T>[];
   className?: string;
@@ -25,7 +25,7 @@ export type CustomTableMeta = {
   onConfirm?: (studentId: number) => void;
 };
 
-const BaseTable = <T extends { id: number }>({ 
+export const BaseTable = <T extends { id: number }>({ 
   data, 
   columns, 
   className = "", 
