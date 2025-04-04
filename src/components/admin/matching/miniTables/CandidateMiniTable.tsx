@@ -18,18 +18,10 @@ interface CandidateMiniTableProps {
 const columnHelper = createColumnHelper<Supporter>();
 
 const columns: ColumnDef<Supporter, any>[] = [
-  columnHelper.accessor("name", {
-    header: "이름",
-  }),
-  columnHelper.accessor("gender", {
-    header: "성별",
-  }),
-  columnHelper.accessor("department", {
-    header: "학과",
-  }),
-  columnHelper.accessor("grade", {
-    header: "학년",
-  }),
+  columnHelper.accessor("name", { header: "이름" }),
+  columnHelper.accessor("gender", { header: "성별" }),
+  columnHelper.accessor("department", { header: "학과" }),
+  columnHelper.accessor("grade", { header: "학년" }),
   columnHelper.accessor("id", {
     id: "timetable",
     header: "시간표",

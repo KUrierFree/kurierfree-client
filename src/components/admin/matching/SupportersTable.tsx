@@ -1,6 +1,6 @@
-import BaseTable from "../../../table/BaseTable";
-import { Supporter } from "../../../../types/user";
-import TimeTableButton from "../TimeTableButton";
+import BaseTable from "../../table/BaseTable";
+import { Supporter } from "../../../types/user";
+import TimeTableButton from "./TimeTableButton";
 import { ColumnDef } from "@tanstack/react-table";
 
 interface Props {

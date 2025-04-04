@@ -1,10 +1,10 @@
-import BaseTable from "../../../table/BaseTable";
-import { DisabledStudent } from "../../../../types/user";
-import CandidateMiniTable from "../miniTables/CandidateMiniTable";
-import Button from "../../../common/Button";
-import TimeTableButton from "../TimeTableButton";
+import BaseTable from "../../table/BaseTable";
+import { DisabledStudent } from "../../../types/user";
+import CandidateMiniTable from "./miniTables/CandidateMiniTable";
+import Button from "../../common/Button";
+import TimeTableButton from "./TimeTableButton";
 import { ColumnDef } from "@tanstack/react-table";
-import type { CustomTableMeta } from "../../../../types/table";
+import type { CustomTableMeta } from "../../../types/table";
 
 interface Props {
   data: DisabledStudent[];
