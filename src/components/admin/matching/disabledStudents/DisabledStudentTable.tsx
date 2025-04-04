@@ -118,7 +118,6 @@ const DisabledStudentTable = ({
             <CandidateMiniTable
               data={disabled_student.matchingCandidates || []}
               onSelect={(supporterId) => onSelectSupporter(disabled_student.id, supporterId)}
-              onConfirm={() => onConfirm(disabled_student.id)}
             />
           </div>
         ),
