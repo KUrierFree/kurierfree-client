@@ -2,7 +2,7 @@
 type UserType = 'supporter' | 'disabled';
 
 // 성별 타입
-type GenderType = '남성' | '여성' | '기타';
+type GenderType = '남성' | '여성';
 
 // 장애 유형
 type DisabilityType = '시각장애' | '청각장애' | '지체장애' | '발달장애' | '기타' | '';
@@ -28,16 +28,18 @@ export interface SignupFormData {
 }
 
 export interface DisabledStudent {
+  disabled_student_id: number;
   name: string;
   department: string;
   gender: GenderType;
   grade: string;
   disabilityType: DisabilityType;
   matchingStatus: MatchingStatus;
+  matchingCandidates?: Supporter[];
 }
 
 export interface Supporter {
-  id: string;
+  supporter_id: number;
   name: string;
   department: string;
   gender: GenderType;
