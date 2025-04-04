@@ -31,6 +31,8 @@
   --color-white: #ffffff;
   --color-success: #4caf4f;
   --color-danger: #df5753;
+  --color-success-bg: #e7f5e9;
+  --color-danger-bg: #ffeaee;
 
   /* 텍스트 색상 */
   --text-primary: #4d4d4d;
