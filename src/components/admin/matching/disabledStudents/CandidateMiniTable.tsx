@@ -35,7 +35,7 @@ const columns: ColumnDef<Supporter, any>[] = [
       const onSelect = table.options.meta?.onSelect;
       return (
         <Button
-          variant="primary"
+          variant="secondary"
           onClick={() => onSelect?.(row.original.id)}
         >
           매칭 확정
