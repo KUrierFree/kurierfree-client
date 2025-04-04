@@ -14,6 +14,7 @@ type TableData = MatchingResult & { id: number };
 
 const columns: ColumnDef<TableData>[] = [
   { accessorKey: "disabledStudent.name", header: "이름" },
+  { accessorKey: "disabledStudent.gender", header: "성별" },
   { accessorKey: "disabledStudent.department", header: "학과" },
   { accessorKey: "disabledStudent.grade", header: "학년" },
   { accessorKey: "disabledStudent.disabilityType", header: "장애유형" },
