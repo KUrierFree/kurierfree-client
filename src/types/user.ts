@@ -22,13 +22,13 @@ export interface SignupFormData {
   department: string;
   grade: string;
   gender: GenderType;
-  userType: UserType;
+  userType?: UserType;
   disabilityType?: DisabilityType;
   otherDisabilityDetail?: string;
 }
 
 export interface DisabledStudent {
-  disabled_student_id: number;
+  id: number;
   name: string;
   department: string;
   gender: GenderType;
@@ -39,7 +39,7 @@ export interface DisabledStudent {
 }
 
 export interface Supporter {
-  supporter_id: number;
+  id: number;
   name: string;
   department: string;
   gender: GenderType;
@@ -48,3 +48,12 @@ export interface Supporter {
   supportType?: string;
   activityTime?: string;
 } 
+
+export interface MatchingResult {
+  disabledStudent: DisabledStudent;
+  supporter: Supporter;
+  dayOfWeek: "MONDAY" | "TUESDAY" | "WEDNESDAY" | "THURSDAY" | "FRIDAY";
+  startTime: string;
+  endTime: string;
+  details?: string;
+}
