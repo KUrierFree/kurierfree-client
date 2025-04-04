@@ -13,6 +13,7 @@ declare module '@tanstack/react-table' {
 interface CandidateMiniTableProps {
   data: Supporter[];
   onSelect: (supporterId: number) => void;
+  onConfirm: () => void;
 }
 
 const columnHelper = createColumnHelper<Supporter>();
@@ -37,20 +38,22 @@ const columns: ColumnDef<Supporter, any>[] = [
           variant="primary"
           onClick={() => onSelect?.(row.original.id)}
         >
-          매칭 완료
+          매칭 확정
         </Button>
       );
     },
   }),
 ];
 
-const CandidateMiniTable = ({ data, onSelect }: CandidateMiniTableProps) => {
+const CandidateMiniTable = ({ data, onSelect, onConfirm }: CandidateMiniTableProps) => {
   return (
-    <BaseMiniTable<Supporter>
-      data={data}
-      columns={columns}
-      meta={{ onSelect }}
-    />
+    <div className="space-y-4">
+      <BaseMiniTable<Supporter>
+        data={data}
+        columns={columns}
+        meta={{ onSelect }}
+      />
+    </div>
   );
 };
 

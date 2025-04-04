@@ -13,6 +13,7 @@ interface Props {
   onSelectSupporter: (studentId: number, supporterId: number) => void;
   onMatchingStart: (student: DisabledStudent) => void;
   onMatchingEdit?: (student: DisabledStudent) => void;
+  onConfirm: (studentId: number) => void;
 }
 
 const columns: ColumnDef<DisabledStudent>[] = [
@@ -52,6 +53,7 @@ const columns: ColumnDef<DisabledStudent>[] = [
         {row.original.matchingStatus === "waiting" && (
           <Button
             variant="primary"
+            data-action="matching"
             onClick={() => (table.options.meta as CustomTableMeta).onMatchingStart(row.original)}
           >
             매칭시작
@@ -60,6 +62,7 @@ const columns: ColumnDef<DisabledStudent>[] = [
         {row.original.matchingStatus === "completed" && (
           <Button
             variant="secondary"
+            data-action="matching"
             onClick={() => (table.options.meta as CustomTableMeta).onMatchingEdit?.(row.original)}
           >
             매칭수정
@@ -76,6 +79,7 @@ const DisabledStudentTable = ({
   onSelectSupporter,
   onMatchingStart,
   onMatchingEdit,
+  onConfirm,
 }: Props) => {
   return (
     <BaseTable
@@ -88,10 +92,13 @@ const DisabledStudentTable = ({
       expandable={{
         expandedRowIds,
         renderExpandedRow: (disabled_student) => (
-          <CandidateMiniTable
-            data={disabled_student.matchingCandidates || []}
-            onSelect={(supporterId) => onSelectSupporter(disabled_student.id, supporterId)}
-          />
+          <div className="p-4">
+            <CandidateMiniTable
+              data={disabled_student.matchingCandidates || []}
+              onSelect={(supporterId) => onSelectSupporter(disabled_student.id, supporterId)}
+              onConfirm={() => onConfirm(disabled_student.id)}
+            />
+          </div>
         ),
       }}
     />

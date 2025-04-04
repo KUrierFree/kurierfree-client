@@ -6,8 +6,9 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 import EmptyTableMessage from './EmptyTableMessage';
+import { DisabledStudent } from "../../types/user";
 
-interface BaseTableProps<T> {
+interface BaseTableProps<T extends { id: number }> {
   data: T[];
   columns: ColumnDef<T>[];
   className?: string;
@@ -18,7 +19,13 @@ interface BaseTableProps<T> {
   }
 }
 
-const BaseTable = <T,>({ 
+export type CustomTableMeta = {
+  onMatchingStart?: (student: DisabledStudent) => void;
+  onMatchingEdit?: (student: DisabledStudent) => void;
+  onConfirm?: (studentId: number) => void;
+};
+
+const BaseTable = <T extends { id: number }>({ 
   data, 
   columns, 
   className = "", 
@@ -66,7 +73,7 @@ const BaseTable = <T,>({
             <EmptyTableMessage colSpan={columns.length} />
           ) : (
             table.getRowModel().rows.map((row) => (              
-              <React.Fragment key={row.id.toString()}>
+              <React.Fragment key={row.original.id.toString()}>
                 <div role="row" className="flex w-full border-b border-gray-200 hover:bg-gray-50">
                   {row.getVisibleCells().map((cell, idx) => (
                     <div
@@ -85,8 +92,8 @@ const BaseTable = <T,>({
                   ))}
                 </div>
                 {/* 확장 행 */}
-                {expandedRowIds.includes(row.id) && renderExpandedRow && (
-                  <div className="w-full border-b border-gray-200">
+                {expandedRowIds.includes(row.original.id.toString()) && renderExpandedRow && (
+                  <div className="w-full border-b border-gray-200 bg-gray-50">
                     {renderExpandedRow(row.original)}
                   </div>
                 )}
