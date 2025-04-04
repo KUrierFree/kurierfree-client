@@ -14,6 +14,7 @@ interface Props {
   onMatchingStart: (student: DisabledStudent) => void;
   onMatchingEdit?: (student: DisabledStudent) => void;
   onConfirm: (studentId: number) => void;
+  onMatchingCancel: (student: DisabledStudent) => void;
 }
 
 const columns: ColumnDef<DisabledStudent>[] = [
@@ -68,6 +69,15 @@ const columns: ColumnDef<DisabledStudent>[] = [
             매칭수정
           </Button>
         )}
+        {row.original.matchingStatus === "selecting" && (
+          <Button
+            variant="danger"
+            data-action="matching-cancel"
+            onClick={() => (table.options.meta as CustomTableMeta).onMatchingCancel?.(row.original)}
+          >
+            매칭취소
+          </Button>
+        )}
       </div>
     ),
   },
@@ -80,6 +90,7 @@ const DisabledStudentTable = ({
   onMatchingStart,
   onMatchingEdit,
   onConfirm,
+  onMatchingCancel,
 }: Props) => {
   return (
     <BaseTable
@@ -88,6 +99,7 @@ const DisabledStudentTable = ({
       meta={{
         onMatchingStart,
         onMatchingEdit,
+        onMatchingCancel,
       }}
       expandable={{
         expandedRowIds,

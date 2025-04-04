@@ -77,6 +77,13 @@ const DisabledStudentTab: React.FC = () => {
     selectingStudentRef.current = student;
   };
 
+  const handleMatchingCancel = (student: DisabledStudent) => {
+    setDisabledStudents(prev => prev.map(s => 
+      s.id === student.id ? { ...s, matchingStatus: "waiting" } : s
+    ));
+    selectingStudentRef.current = null;
+  };
+
   const handleConfirm = (studentId: number) => {
     setDisabledStudents(prev =>
       prev.map(student =>
@@ -101,6 +108,7 @@ const DisabledStudentTab: React.FC = () => {
         onSelectSupporter={handleSelectSupporter}
         onMatchingStart={handleMatchingStart}
         onMatchingEdit={handleMatchingEdit}
+        onMatchingCancel={handleMatchingCancel}
         onConfirm={handleConfirm}
       />
     </div>
