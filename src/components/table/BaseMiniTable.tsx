@@ -20,17 +20,16 @@ const BaseMiniTable = <T,>({
   });
 
   return (
-    <div className="bg-white">
-      <table className="w-full border-collapse border border-gray-300">
-
-        {/* Header */}
-        <thead className="bg-gray-100">
+    <div className="bg-white rounded-lg border border-gray-200">
+      <table className="w-full border-collapse">
+        <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id} className="border-b">
+            <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="p-3 border border-gray-300 text-left"
+                  className="px-4 py-2 text-left text-sm font-medium text-gray-500 bg-gray-50 border-b border-gray-200 last:border-r-0"
+                  style={{ width: header.getSize() }}
                 >
                   {flexRender(
                     header.column.columnDef.header,
@@ -41,16 +40,14 @@ const BaseMiniTable = <T,>({
             </tr>
           ))}
         </thead>
-
-        {/* Body */}
         <tbody>
           {data.length === 0 ? (
-              <EmptyTableMessage colSpan={columns.length} />
+            <EmptyTableMessage colSpan={columns.length} />
           ) : (
             table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="border-b hover:bg-gray-50">
+              <tr key={row.id} className="border-t border-gray-200 hover:bg-gray-50">
                 {row.getVisibleCells().map((cell) => (
-                  <td key={cell.id} className="p-3 border border-gray-300">
+                  <td key={cell.id} className="px-4 py-2 text-sm border-r border-gray-200 last:border-r-0">
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
                 ))}
