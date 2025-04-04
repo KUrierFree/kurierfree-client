@@ -1,7 +1,6 @@
 import React from "react";
 import { BaseTable } from "../../table/BaseTable";
-import { createColumnHelper, Row } from "@tanstack/react-table";
-import { MatchingResult } from "../../../types/user";
+import { MatchingResult } from "../../../types/matching";
 import TimeTableButton from "./TimeTableButton";
 import MatchedMiniTable from "./miniTables/MatchedMiniTable";
 import { ColumnDef } from "@tanstack/react-table";

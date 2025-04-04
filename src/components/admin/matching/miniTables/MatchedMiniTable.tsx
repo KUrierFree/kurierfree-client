@@ -1,5 +1,5 @@
 import { createColumnHelper, ColumnDef } from "@tanstack/react-table";
-import { MatchingResult } from "../../../../types/user";
+import { MatchingResult } from "../../../../types/matching";
 import TimeTableButton from "../TimeTableButton";
 import BaseMiniTable from "../../../table/BaseMiniTable";
 
