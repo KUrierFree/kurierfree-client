@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import DisabledStudentTable from "../../../../components/admin/matching/DisabledStudentTable";
+import DisabledStudentTable from "../../../../components/admin/matching/disabledStudents/DisabledStudentTable";
 import { useMatching } from "../../../../hooks/useMatching";
 import { DisabledStudent, Supporter } from "../../../../types/user";
 

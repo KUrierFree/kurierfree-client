@@ -1,4 +1,4 @@
-import BaseTable from "../../table/BaseTable";
+import BaseTable from "./tables/BaseTable";
 import { Supporter } from "../../../types/user";
 import TimeTableButton from "./TimeTableButton";
 import { ColumnDef } from "@tanstack/react-table";

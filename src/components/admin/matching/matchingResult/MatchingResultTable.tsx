@@ -1,8 +1,8 @@
 import React from "react";
-import { BaseTable } from "../../table/BaseTable";
-import { MatchingResult } from "../../../types/matching";
-import TimeTableButton from "./TimeTableButton";
-import MatchedMiniTable from "./miniTables/MatchedMiniTable";
+import { BaseTable } from "../tables/BaseTable";
+import { MatchingResult } from "../../../../types/matching";
+import TimeTableButton from "../TimeTableButton";
+import MatchedMiniTable from "../miniTables/MatchedMiniTable";
 import { ColumnDef } from "@tanstack/react-table";
 
 interface Props {

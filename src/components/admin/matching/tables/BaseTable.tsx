@@ -6,7 +6,7 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 import EmptyTableMessage from './EmptyTableMessage';
-import { DisabledStudent } from "../../types/user";
+import { DisabledStudent } from "../../../../types/user";
 
 interface BaseTableProps<T> {
   data: T[];

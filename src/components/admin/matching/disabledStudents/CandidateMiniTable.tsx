@@ -2,7 +2,7 @@ import { createColumnHelper, ColumnDef } from "@tanstack/react-table";
 import { Supporter } from "../../../../types/user";
 import TimeTableButton from "../TimeTableButton";
 import Button from "../../../common/Button";
-import BaseMiniTable from "../../../table/BaseMiniTable";
+import BaseMiniTable from "../tables/BaseMiniTable";
 
 declare module '@tanstack/react-table' {
   interface TableMeta<TData extends unknown> {

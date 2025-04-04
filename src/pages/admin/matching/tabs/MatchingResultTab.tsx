@@ -1,5 +1,5 @@
 import React from "react";
-import MatchingResultTable from "../../../../components/admin/matching/MatchingResultTable";
+import MatchingResultTable from "../../../../components/admin/matching/matchingResult/MatchingResultTable";
 import { MatchingResult } from "../../../../types/matching";
 
 // 더미 데이터
