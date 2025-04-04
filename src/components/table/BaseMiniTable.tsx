@@ -28,7 +28,7 @@ const BaseMiniTable = <T,>({
               {headerGroup.headers.map((header) => (
                 <th
                   key={header.id}
-                  className="px-4 py-2 text-left text-sm font-medium text-gray-500 bg-gray-50 border-b border-gray-200 last:border-r-0"
+                  className="px-4 py-2 text-left text-sm font-medium text-gray-500 bg-gray-50 border-b border-r border-gray-200 last:border-r-0"
                   style={{ width: header.getSize() }}
                 >
                   {flexRender(
