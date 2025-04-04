@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import DisabledStudentTable from "../../../../components/admin/matching/DisabledStudentTable";
 import { DisabledStudent, Supporter } from "../../../../types/user";
 
@@ -47,6 +47,7 @@ const dummySupporters: Supporter[] = [
 
 const DisabledStudentTab: React.FC = () => {
   const [disabledStudents, setDisabledStudents] = useState(dummyDisabledStudents);
+  const [supporters, setSupporters] = useState(dummySupporters);
   const tableRef = useRef<HTMLDivElement>(null);
   const selectingStudentRef = useRef<DisabledStudent | null>(null);
 
@@ -67,19 +68,28 @@ const DisabledStudentTab: React.FC = () => {
     setDisabledStudents(prev => prev.map(s => 
       s.id === studentId ? { ...s, matchingStatus: "completed" } : s
     ));
+    setSupporters(prev => prev.map(s =>
+      s.id === supporterId ? { ...s, matchingStatus: "completed" } : s
+    ));
     selectingStudentRef.current = null;
   };
 
-  const handleMatchingEdit = (student: DisabledStudent) => {
+  const handleMatchingEdit = (student: DisabledStudent, supporter: Supporter) => {
     setDisabledStudents(prev => prev.map(s => 
       s.id === student.id ? { ...s, matchingStatus: "selecting" } : s
+    ));
+    setSupporters(prev => prev.map(s =>
+      s.id === supporter.id ? { ...s, matchingStatus: "selecting" } : s
     ));
     selectingStudentRef.current = student;
   };
 
-  const handleMatchingCancel = (student: DisabledStudent) => {
+  const handleMatchingCancel = (student: DisabledStudent, supporter: Supporter) => {
     setDisabledStudents(prev => prev.map(s => 
       s.id === student.id ? { ...s, matchingStatus: "waiting" } : s
+    ));
+    setSupporters(prev => prev.map(s =>
+      s.id === supporter.id ? { ...s, matchingStatus: "waiting" } : s
     ));
     selectingStudentRef.current = null;
   };

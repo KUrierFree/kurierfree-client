@@ -1,5 +1,5 @@
 import BaseTable from "../../table/BaseTable";
-import { DisabledStudent } from "../../../types/user";
+import { DisabledStudent, Supporter } from "../../../types/user";
 import CandidateMiniTable from "./miniTables/CandidateMiniTable";
 import Button from "../../common/Button";
 import TimeTableButton from "./TimeTableButton";
@@ -12,9 +12,9 @@ interface Props {
   toggleRow: (id: string) => void;
   onSelectSupporter: (studentId: number, supporterId: number) => void;
   onMatchingStart: (student: DisabledStudent) => void;
-  onMatchingEdit?: (student: DisabledStudent) => void;
+  onMatchingEdit: (student: DisabledStudent, supporter: Supporter) => void;
   onConfirm: (studentId: number) => void;
-  onMatchingCancel: (student: DisabledStudent) => void;
+  onMatchingCancel: (student: DisabledStudent, supporter: Supporter) => void;
 }
 
 const columns: ColumnDef<DisabledStudent>[] = [
@@ -64,7 +64,12 @@ const columns: ColumnDef<DisabledStudent>[] = [
           <Button
             variant="secondary"
             data-action="matching"
-            onClick={() => (table.options.meta as CustomTableMeta).onMatchingEdit?.(row.original)}
+            onClick={() => {
+              const supporter = row.original.matchingCandidates?.[0];
+              if (supporter) {
+                (table.options.meta as CustomTableMeta).onMatchingEdit?.(row.original, supporter);
+              }
+            }}
           >
             매칭수정
           </Button>
@@ -73,7 +78,12 @@ const columns: ColumnDef<DisabledStudent>[] = [
           <Button
             variant="danger"
             data-action="matching-cancel"
-            onClick={() => (table.options.meta as CustomTableMeta).onMatchingCancel?.(row.original)}
+            onClick={() => {
+              const supporter = row.original.matchingCandidates?.[0];
+              if (supporter) {
+                (table.options.meta as CustomTableMeta).onMatchingCancel?.(row.original, supporter);
+              }
+            }}
           >
             매칭취소
           </Button>
