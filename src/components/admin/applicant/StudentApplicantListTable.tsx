@@ -94,9 +94,9 @@ const StudentApplicantListTable: React.FC<StudentApplicantListProps> = ({
                 key={row.id}
                 className={`border-b ${
                   row.original.status === "확정"
-                    ? "bg-[var(--color-success)]"
+                    ? "bg-[var(--color-success-bg)]"
                     : row.original.status === "탈락"
-                      ? "bg-[var(--color-danger)]"
+                      ? "bg-[var(--color-danger-bg)]"
                       : ""
                 }`}
               >
