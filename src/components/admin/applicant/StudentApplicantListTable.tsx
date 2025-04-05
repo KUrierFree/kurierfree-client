@@ -5,7 +5,7 @@ import {
   flexRender,
   ColumnDef,
 } from "@tanstack/react-table";
-import Button from "../common/Button";
+import Button from "../../common/Button";
 
 // 학생 타입 정의
 interface Student {

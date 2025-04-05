@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { SignupFormData, GenderType, UserType } from '../types/user';
+import { SignupFormData } from '../types/user';
 
 // 스토어 인터페이스
 interface SignupStore {
@@ -19,8 +19,8 @@ const initialFormData: SignupFormData = {
   name: '',
   department: '',
   grade: '',
-  gender: '' as GenderType,
-  userType: '' as UserType,
+  gender: '남성',
+  userType: undefined,
   disabilityType: '',
   otherDisabilityDetail: '',
 };

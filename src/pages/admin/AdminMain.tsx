@@ -8,7 +8,6 @@ const AdminMain = () => {
   // 카드 데이터 (text, 배경색, 이동할 경로)
   const cards = [
     { text: "지원자 관리", bgColor: "bg-[#bfe0c3]", path: "/admin/applicant" },
-    // todo : 서포터즈 매칭이랑 route 조정
     { text: "서포터즈 매칭", bgColor: "bg-[#c6e2f8]", path: "/admin/matching" },
   ];
 
@@ -21,7 +20,7 @@ const AdminMain = () => {
             <div
               key={index}
               className={`w-[322px] h-[183px] ${bgColor} rounded-[20px] outline outline-1 outline-[#263238] flex justify-center items-center cursor-pointer transition hover:scale-105`}
-              onClick={() => navigate(path)} // 클릭 시 페이지 이동
+              onClick={() => navigate(path)}
             >
               <span className="text-black text-3xl font-semibold leading-[45px] text-center">
                 {text}
