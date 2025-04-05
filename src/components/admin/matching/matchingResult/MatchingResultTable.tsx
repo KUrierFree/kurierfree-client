@@ -28,9 +28,9 @@ const columns: ColumnDef<TableData>[] = [
 ];
 
 const MatchingResultTable: React.FC<Props> = ({ data }) => {
-  const tableData = data.map((result, index) => ({
+  const tableData = data.map((result) => ({
     ...result,
-    id: index + 1,
+    id: result.disabledStudent.id,
   }));
 
   return (
