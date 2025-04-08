@@ -1,13 +1,13 @@
 import { MatchingStatus } from "./matching";
 
 // 사용자 유형 (서포터즈 또는 장애학생)
-type UserType = 'supporter' | 'disabled';
+export type UserType = 'supporter' | 'disabled';
 
 // 성별 타입
-type GenderType = '남성' | '여성';
+export type GenderType = '남성' | '여성';
 
 // 장애 유형
-type DisabilityType = '시각장애' | '청각장애' | '지체장애' | '발달장애' | '기타' | '';
+export type DisabilityType = '시각장애' | '청각장애' | '지체장애' | '발달장애' | '기타' | '';
 
 // 회원가입 폼 데이터 타입 정의
 export interface SignupFormData {
