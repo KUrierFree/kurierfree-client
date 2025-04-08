@@ -50,12 +50,10 @@ const DisabledStudentTab: React.FC = () => {
   const tableRef = useRef<HTMLDivElement>(null);
   const {
     disabledStudents,
-    selectingStudentRef,
     handleMatchingStart,
     handleSelectSupporter,
     handleMatchingEdit,
     handleMatchingCancel,
-    handleConfirm,
   } = useMatching(dummyDisabledStudents);
 
   const expandedRowIds = disabledStudents
@@ -72,7 +70,6 @@ const DisabledStudentTab: React.FC = () => {
         onMatchingStart={handleMatchingStart}
         onMatchingEdit={handleMatchingEdit}
         onMatchingCancel={handleMatchingCancel}
-        onConfirm={handleConfirm}
         supporters={dummySupporters}
       />
     </div>

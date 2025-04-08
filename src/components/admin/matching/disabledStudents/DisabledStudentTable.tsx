@@ -14,7 +14,6 @@ interface Props {
   onMatchingStart: (student: DisabledStudent, supporters: Supporter[]) => void;
   onMatchingEdit: (student: DisabledStudent) => void;
   onMatchingCancel: (student: DisabledStudent) => void;
-  onConfirm: (studentId: number) => void;
   supporters: Supporter[];
 }
 
@@ -98,7 +97,6 @@ const DisabledStudentTable = ({
   onMatchingStart,
   onMatchingEdit,
   onMatchingCancel,
-  onConfirm,
   supporters,
 }: Props) => {
   return (
