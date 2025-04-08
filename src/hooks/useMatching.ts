@@ -18,7 +18,7 @@ export const useMatching = (initialDisabledStudents: DisabledStudent[]) => {
     selectingStudentRef.current = student;
   };
 
-  const handleSelectSupporter = (studentId: number, supporterId: number) => {
+  const handleSelectSupporter = (studentId: number) => {
     setDisabledStudents(prev => prev.map(s => 
       s.id === studentId ? { ...s, matchingStatus: "completed" } : s
     ));
