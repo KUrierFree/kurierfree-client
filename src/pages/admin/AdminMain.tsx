@@ -1,11 +1,14 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Footer from "../../components/layout/Footer";
 import Header from "../../components/layout/Header";
+import PeriodSettingCard from "../../components/admin/PeriodSettingCard";
+import FixedPeriodCard from "../../components/admin/FixedPeriodCard";
 
 const AdminMain = () => {
   const navigate = useNavigate();
+  const [canEditPeriod] = useState(false); // todo: 서버 응답 연결 필요
 
-  // 카드 데이터 (text, 배경색, 이동할 경로)
   const cards = [
     { text: "지원자 관리", bgColor: "bg-[#bfe0c3]", path: "/admin/applicant" },
     { text: "서포터즈 매칭", bgColor: "bg-[#c6e2f8]", path: "/admin/matching" },
@@ -14,8 +17,9 @@ const AdminMain = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-[#f5f7f9] flex flex-col justify-center py-12 sm:px-6 lg:px-8">
-        <div className="sm:mx-auto flex justify-center items-center gap-[73px]">
+      <div className="min-h-screen bg-[#f5f7f9] flex flex-col justify-center items-center gap-10 py-24 sm:px-6 lg:px-8">
+        {canEditPeriod ? <PeriodSettingCard /> : <FixedPeriodCard />}
+        <div className="sm:mx-auto flex justify-center gap-24">
           {cards.map(({ text, bgColor, path }, index) => (
             <div
               key={index}
