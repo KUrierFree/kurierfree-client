@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AdminConfirmModal from "../../../components/admin/applicant/AdminConfirmModal";
 import StudentApplicantTable from "../../../components/admin/applicant/StudentApplicantTable";
 import Button from "../../../components/common/Button";
 import { useNavigate } from "react-router-dom";
@@ -54,7 +53,6 @@ const dummyStudents: Student[] = [
 ];
 
 const AdminApplicantMain: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const [students, setStudents] = useState<Student[]>([]);
 
@@ -74,7 +72,6 @@ const AdminApplicantMain: React.FC = () => {
             <Button
               variant="primary"
               onClick={() => {
-                setIsOpen(false);
                 setTimeout(() => {
                   navigate("/admin/applicant/list");
                 }, 0);
@@ -82,19 +79,18 @@ const AdminApplicantMain: React.FC = () => {
             >
               수정
             </Button>
-            <Button variant="secondary" onClick={() => setIsOpen(true)}>
-              이번 학기 선발 완료
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setTimeout(() => {
+                  navigate("/admin/matching?tab=matching");
+                }, 0);
+              }}
+            >
+              매칭 결과 확인하기
             </Button>
           </div>
         </div>
-        <AdminConfirmModal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          onConfirm={() => {
-            alert("확정되었습니다!");
-            setIsOpen(false);
-          }}
-        />
       </div>
       <Footer />
     </>
