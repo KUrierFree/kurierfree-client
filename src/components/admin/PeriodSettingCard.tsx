@@ -8,10 +8,10 @@ const PeriodSettingCard = () => {
   const [selectEnd, setSelectEnd] = useState<Date>();
   const [activePicker, setActivePicker] = useState<null | string>(null);
 
-  const [fixedApplyStart] = useState<Date | null>(new Date("2025-03-15"));
-  const [fixedApplyEnd] = useState<Date | null>(new Date("2025-03-26"));
-  const [fixedSelectStart] = useState<Date | null>(new Date("2025-03-27"));
-  const [fixedSelectEnd] = useState<Date | null>(new Date("2025-04-13"));
+  const [fixedApplyStart] = useState<Date | null>(null);
+  const [fixedApplyEnd] = useState<Date | null>(null);
+  const [fixedSelectStart] = useState<Date | null>(null);
+  const [fixedSelectEnd] = useState<Date | null>(null);
 
   const format = (date: Date | undefined) =>
     date ? date.toISOString().slice(2, 10).replace(/-/g, ".") : "****-**-**";
@@ -40,6 +40,10 @@ const PeriodSettingCard = () => {
           <DatePickers
             selectedDate={applyStart}
             onSelectDate={(date) => {
+              if (applyEnd && date.getTime() >= applyEnd.getTime()) {
+                alert("지원 시작일은 지원 종료일 이전이어야 합니다.");
+                return;
+              }
               setApplyStart(date);
               setActivePicker(null);
             }}
@@ -63,6 +67,14 @@ const PeriodSettingCard = () => {
           <DatePickers
             selectedDate={applyEnd}
             onSelectDate={(date) => {
+              if (!applyStart || date.getTime() <= applyStart.getTime()) {
+                alert("지원 종료일은 지원 시작일 이후여야 합니다.");
+                return;
+              }
+              if (selectStart && date.getTime() >= selectStart.getTime()) {
+                alert("지원 종료일은 선발 시작일 이전이어야 합니다.");
+                return;
+              }
               setApplyEnd(date);
               setActivePicker(null);
             }}
@@ -86,6 +98,14 @@ const PeriodSettingCard = () => {
           <DatePickers
             selectedDate={selectStart}
             onSelectDate={(date) => {
+              if (!applyEnd || date.getTime() <= applyEnd.getTime()) {
+                alert("선발 시작일은 지원 종료일 이후여야 합니다.");
+                return;
+              }
+              if (selectEnd && date.getTime() >= selectEnd.getTime()) {
+                alert("선발 시작일은 선발 종료일 이전이어야 합니다.");
+                return;
+              }
               setSelectStart(date);
               setActivePicker(null);
             }}
@@ -109,6 +129,10 @@ const PeriodSettingCard = () => {
           <DatePickers
             selectedDate={selectEnd}
             onSelectDate={(date) => {
+              if (!selectStart || date.getTime() <= selectStart.getTime()) {
+                alert("선발 종료일은 선발 시작일 이후여야 합니다.");
+                return;
+              }
               setSelectEnd(date);
               setActivePicker(null);
             }}
