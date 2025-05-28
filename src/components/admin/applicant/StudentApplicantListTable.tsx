@@ -20,9 +20,13 @@ interface Student {
 interface StudentApplicantListProps {
   students: Student[]; // 전체 지원자 데이터
   onDetailClick: (student: Student) => void; // 상세정보 버튼 클릭 핸들러
+  onToggleStatus: (student: Student) => void; // 상태 토글 핸들러
 }
 
-const columns: ColumnDef<Student>[] = [
+const columns = (
+  students: Student[],
+  onDetailClick: (student: Student) => void
+): ColumnDef<Student>[] => [
   { accessorKey: "name", header: "이름" },
   { accessorKey: "department", header: "학과" },
   { accessorKey: "gender", header: "성별" },
@@ -34,7 +38,7 @@ const columns: ColumnDef<Student>[] = [
       <Button
         variant="table"
         className="w-full flex justify-center px-[30%]"
-        onClick={() => row.original && row.original.onDetailClick(row.original)}
+        onClick={() => onDetailClick(students[row.index])}
       >
         상세 보기
       </Button>
@@ -45,13 +49,11 @@ const columns: ColumnDef<Student>[] = [
 const StudentApplicantListTable: React.FC<StudentApplicantListProps> = ({
   students,
   onDetailClick,
+  onToggleStatus,
 }) => {
   const table = useReactTable({
-    data: students.map((student) => ({
-      ...student,
-      onDetailClick, // 🔹 상세정보 클릭 핸들러 추가
-    })),
-    columns,
+    data: students,
+    columns: columns(students, onDetailClick),
     getCoreRowModel: getCoreRowModel(),
   });
 
@@ -82,7 +84,7 @@ const StudentApplicantListTable: React.FC<StudentApplicantListProps> = ({
           {students.length === 0 ? (
             <tr className="border-b">
               <td
-                colSpan={columns.length}
+                colSpan={columns(students, onDetailClick).length}
                 className="p-3 text-center text-gray-500"
               >
                 지원한 서포터즈가 없습니다.
@@ -92,13 +94,14 @@ const StudentApplicantListTable: React.FC<StudentApplicantListProps> = ({
             table.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className={`border-b ${
+                className={`border-b cursor-pointer ${
                   row.original.status === "확정"
                     ? "bg-[var(--color-success-bg)]"
                     : row.original.status === "탈락"
                       ? "bg-[var(--color-danger-bg)]"
                       : ""
                 }`}
+                onClick={() => onToggleStatus(row.original)}
               >
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className="p-3 border border-gray-300">
