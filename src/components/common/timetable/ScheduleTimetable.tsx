@@ -42,27 +42,26 @@ const ScheduleTimetable: React.FC<ScheduleTimetableProps> = ({ items }) => {
         }}
       >
         <div />
-        {dates.map((date) => (
-          <div
-            key={date}
-            className={`text-center rounded border text-xs ${
-              date ===
-              new Date().toLocaleDateString("ko-KR", {
-                month: "numeric",
-                day: "numeric",
-              })
-                ? "bg-[#4caf4f] text-white"
-                : "border-[#4caf4f]"
-            }`}
-          >
-            {(() => {
-              const d = new Date(date);
-              const month = d.getMonth() + 1;
-              const day = d.getDate();
-              return `${month}/${day}`;
-            })()}
-          </div>
-        ))}
+        {dates.map((date) => {
+          const isToday = (() => {
+            const today = new Date();
+            const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+            return date === todayStr;
+          })();
+          return (
+            <div
+              key={date}
+              className={`text-center rounded border text-xs ${isToday ? "bg-[#4caf4f] text-white" : "border-[#4caf4f]"}`}
+            >
+              {(() => {
+                const d = new Date(date);
+                const month = d.getMonth() + 1;
+                const day = d.getDate();
+                return `${month}/${day}`;
+              })()}
+            </div>
+          );
+        })}
 
         {timeSlots.map((time, rowIdx) => (
           <React.Fragment key={time}>
