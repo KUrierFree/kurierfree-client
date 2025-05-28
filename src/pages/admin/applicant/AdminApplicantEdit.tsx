@@ -85,7 +85,7 @@ const AdminApplicantEdit: React.FC = () => {
               variant="primary"
               onClick={() => {
                 setTimeout(() => {
-                  navigate("/admin/applicant/list");
+                  navigate("/admin/applicant");
                 }, 0);
               }}
             >
