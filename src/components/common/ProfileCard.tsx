@@ -17,7 +17,7 @@ const SupporterProfileCard: React.FC<SupporterProfileCardProps> = ({
 }) => {
   return (
     <div
-      className="w-[672px] bg-[#BFE0C3] rounded-xl p-6 shadow-sm border border-[#66BA6A] min-w-[672px] max-w-[672px]"
+      className="w-full bg-[#BFE0C3] rounded-xl p-6 shadow-sm border border-[#66BA6A]"
     >
       <div className="flex items-center gap-2 mb-1">
         <span

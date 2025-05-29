@@ -9,6 +9,7 @@ import SupporterMatchingPage from "../pages/admin/matching/SupporterMatchingPage
 import AdminApplicantMain from "../pages/admin/applicant/AdminApplicantMain";
 import AdminApplicantEdit from "../pages/admin/applicant/AdminApplicantEdit";
 import SupporterMain from "../pages/supporter/SupporterMain";
+import DisabledUserMain from "../pages/disabledUser/DisabledUserMain";
 
 const AppRoutes = () => {
   return (
@@ -24,6 +25,9 @@ const AppRoutes = () => {
 
       {/* 서포터즈 페이지 */}
       <Route path="/supporters" element={<SupporterMain />} />
+
+      {/* 장애학생 페이지 */}
+      <Route path="/disabled-users" element={<DisabledUserMain />} />
 
       {/* 회원가입 중첩 라우팅 */}
       <Route path="/signup" element={<Signup />}>
