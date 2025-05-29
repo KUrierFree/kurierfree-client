@@ -22,7 +22,7 @@ const SupporterApplyPage: React.FC = () => {
   const userData = formData.studentId ? formData : dummyUserData;
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-gray-50">
       <Header />
       <main className="flex-1 flex flex-col items-center pt-32 pb-16 px-4">
         <div className="w-full max-w-2xl bg-white rounded-xl shadow p-8 border">
@@ -32,38 +32,38 @@ const SupporterApplyPage: React.FC = () => {
           <table className="w-full border text-sm mb-6">
             <tbody>
               <tr>
-                <td className="border px-2 py-1 bg-gray-100 w-24">소속</td>
+                <th className="border px-2 py-1 bg-gray-100 w-24">소속</th>
                 <td className="border px-2 py-1 bg-gray-50 text-gray-500 italic cursor-not-allowed" colSpan={3}>{userData.department}</td>
               </tr>
               <tr>
-                <td className="border px-2 py-1 bg-gray-100">학번</td>
+                <th className="border px-2 py-1 bg-gray-100">학번</th>
                 <td className="border px-2 py-1 bg-gray-50 text-gray-500 italic cursor-not-allowed">{userData.studentId}</td>
-                <td className="border px-2 py-1 bg-gray-100">학년</td>
+                <th className="border px-2 py-1 bg-gray-100">학년</th>
                 <td className="border px-2 py-1 bg-gray-50 text-gray-500 italic cursor-not-allowed">{userData.grade}</td>
               </tr>
               <tr>
-                <td className="border px-2 py-1 bg-gray-100">성명</td>
+                <th className="border px-2 py-1 bg-gray-100">성명</th>
                 <td className="border px-2 py-1 bg-gray-50 text-gray-500 italic cursor-not-allowed">{userData.name}</td>
-                <td className="border px-2 py-1 bg-gray-100">성별</td>
+                <th className="border px-2 py-1 bg-gray-100">성별</th>
                 <td className="border px-2 py-1 bg-gray-50 text-gray-500 italic cursor-not-allowed">{userData.gender}</td>
               </tr>
               <tr>
-                <td className="border px-2 py-1 bg-gray-100">생년월일</td>
+                <th className="border px-2 py-1 bg-gray-100">생년월일</th>
                 <td className="border px-2 py-1"><input className="w-full" /></td>
-                <td className="border px-2 py-1 bg-gray-100">서포터즈 활동경험</td>
+                <th className="border px-2 py-1 bg-gray-100">서포터즈 활동경험</th>
                 <td className="border px-2 py-1" colSpan={3}>
                   <label className="mr-4"><input type="radio" name="exp" className="mr-1" />유</label>
                   <label><input type="radio" name="exp" className="mr-1" />무</label>
                 </td>
               </tr>
               <tr>
-                <td className="border px-2 py-1 bg-gray-100">E-mail</td>
+                <th className="border px-2 py-1 bg-gray-100">E-mail</th>
                 <td className="border px-2 py-1"><input className="w-full" /></td>
-                <td className="border px-2 py-1 bg-gray-100">휴대폰</td>
+                <th className="border px-2 py-1 bg-gray-100">휴대폰</th>
                 <td className="border px-2 py-1"><input className="w-full" /></td>
               </tr>
               <tr>
-                <td className="border px-2 py-1 bg-gray-100">활동 유형</td>
+                <th className="border px-2 py-1 bg-gray-100">활동 유형</th>
                 <td className="border px-2 py-1" colSpan={5}>
                   <label className="mr-4"><input type="radio" name="activity" className="mr-1" />국가근로</label>
                   <label><input type="radio" name="activity" className="mr-1" />사회봉사</label>
